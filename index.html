@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artificial Intelligence Made Easy</title>
-
   <style>
-    /* ──────────────────────────────────────────────────────────────────
-       Global Styles (adapted from Speak Theme)
-    ────────────────────────────────────────────────────────────────── */
+    /* ───────────────── Global Styles ───────────────── */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -16,16 +13,13 @@
       color: #fff;
       text-align: center;
     }
-
     header {
       padding: 3em 1em 1em;
     }
-
     .title-group {
       display: inline-block;
       margin-bottom: 0.4em;
     }
-
     .title-group span {
       display: block;
       font-size: 2.8em;
@@ -35,14 +29,12 @@
       margin: 0.2em 0;
       line-height: 1.1em;
     }
-
     h2 {
       font-size: 1.2em;
       color: #fff;
       margin: 0.6em 0 0.4em;
       white-space: nowrap;
     }
-
     .pill-bar {
       display: inline-flex;
       align-items: center;
@@ -53,45 +45,131 @@
       font-size: 0.95em;
       color: #fff;
       margin-top: 0.6em;
-      white-space: nowrap; /* keep on one line */
+      white-space: nowrap;
     }
-
     main {
       max-width: 850px;
       margin: auto;
       padding: 2em 1em 3em;
       position: relative;
     }
-
+    /* ───────────────── Electric Frame & Video Styles ───────────────── */
     .electric-frame {
       position: relative;
       padding: 10px;
       border-radius: 12px;
       margin: 2em auto;
       background-color: #000;
-      box-shadow:
-        0 0 10px #fdf200,
-        0 0 16px #ffe600,
-        0 0 22px #fff000;
+      box-shadow: 0 0 10px #fdf200, 0 0 16px #ffe600, 0 0 22px #fff000;
       animation: flicker 1.5s infinite alternate;
       max-width: 800px;
     }
-
     @keyframes flicker {
       0% {
-        box-shadow:
-          0 0 8px #ffeb3b,
-          0 0 12px #fdf200,
-          0 0 18px #ffe600;
+        box-shadow: 0 0 8px #ffeb3b, 0 0 12px #fdf200, 0 0 18px #ffe600;
       }
       100% {
-        box-shadow:
-          0 0 12px #fdf200,
-          0 0 18px #fff000,
-          0 0 24px #ffeb3b;
+        box-shadow: 0 0 12px #fdf200, 0 0 18px #fff000, 0 0 24px #ffeb3b;
       }
     }
-
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .video-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000;
+    }
+    .placeholder-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://img.youtube.com/vi/YOUR_AI_VIDEO_ID/maxresdefault.jpg');
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      z-index: 100;
+    }
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 15px #ffeb3b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 101;
+    }
+    .play-button::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 25px solid #000;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+    }
+    #player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      z-index: 0;
+    }
+    .click-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 200;
+      cursor: pointer;
+    }
+    /* ───────────────── Sign-Up Button ───────────────── */
+    .sign-up-btn {
+      display: none;
+      position: absolute;
+      bottom: 15%;
+      left: 10%;
+      padding: 0.8em 1.2em;
+      border: none;
+      border-radius: 4px;
+      background: #FFDD00;
+      color: #000;
+      font-weight: 700;
+      box-shadow: 0 0 8px rgba(255,221,0,0.7);
+      cursor: pointer;
+      z-index: 900;
+    }
+    .sign-up-btn.visible {
+      display: inline-block;
+    }
+    /* ───────────────── Responsive Tweaks ───────────────── */
+    @media (max-width: 600px) {
+      .title-group span { font-size: 2em; }
+      h2 { font-size: 1em; }
+      .video-message { font-size: 1em; }
+      .sign-up-btn { font-size: 0.9em; bottom: 10%; }
+    }
+    /* ───────────────── Video Message Section ───────────────── */
     .arrow-up {
       font-size: 2.2em;
       color: #FFA500;
@@ -99,14 +177,12 @@
       letter-spacing: 0.5em;
       margin: 0.3em 0 0;
     }
-
     .access-message {
       font-size: 1.35em;
       font-weight: 700;
       font-family: 'Segoe UI Semibold', sans-serif;
       margin-top: 0.3em;
     }
-
     .video-message {
       font-size: 1.15em;
       color: #ccc;
@@ -115,15 +191,11 @@
       margin-top: 1.2em;
       text-align: left;
     }
-
-    /* make first sentence white */
     .video-message .intro {
       color: #fff;
       display: block;
       margin-bottom: 1em;
     }
-
-    /* title for bullet list */
     .video-message-list-title {
       font-size: 1.15em;
       color: #ccc;
@@ -132,8 +204,6 @@
       text-align: left;
       padding: 0 1em;
     }
-
-    /* bullet list styling */
     .course-covers {
       list-style: none;
       padding-left: 1.2em;
@@ -153,122 +223,22 @@
       left: 0;
       top: 0;
     }
-
     footer {
       font-size: 0.85em;
       color: #bbb;
       padding: 2em 1em;
       border-top: 1px solid #333;
     }
-
-    /* ──────────────────────────────────────────────────────────────────
-       Masked Video Styles
-    ────────────────────────────────────────────────────────────────── */
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 8px;
-    }
-
-    .video-wrapper {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      border-radius: 8px;
-      background: #000;
-    }
-
-    .placeholder-frame {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url('https://img.youtube.com/vi/YOUR_AI_VIDEO_ID/maxresdefault.jpg');
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
-      z-index: 100;
-    }
-
-    .play-button {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 0 15px #ffeb3b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 101;
-    }
-
-    .play-button::after {
-      content: '';
-      display: block;
-      width: 0; height: 0;
-      border-left: 25px solid #000;
-      border-top: 15px solid transparent;
-      border-bottom: 15px solid transparent;
-    }
-
-    #player {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: none;
-      z-index: 0;
-    }
-
-    .click-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 200;
-      cursor: pointer;
-    }
-
-    /* ──────────────────────────────────────────────────────────────────
-       Sign-Up Button Styles
-    ────────────────────────────────────────────────────────────────── */
-    .sign-up-btn {
-      display: none;
-      position: absolute;
-      bottom: 15%;
-      left: 10%;
-      padding: 0.8em 1.2em;
-      border: none;
-      border-radius: 4px;
-      background: #FFDD00;
-      color: #000;
-      font-weight: 700;
-      box-shadow: 0 0 8px rgba(255,221,0,0.7);
-      cursor: pointer;
-      z-index: 900;
-    }
-
-    @media (max-width: 600px) {
-      .title-group span { font-size: 2em; }
-      h2 { font-size: 1em; }
-      .video-message { font-size: 1em; }
-      .sign-up-btn { font-size: 0.9em; bottom: 10%; }
-    }
   </style>
 </head>
 <body>
-
   <header>
     <div class="title-group">
       <span>Artificial Intelligence.</span>
       <span>Made Easy.</span>
     </div>
     <h2>Understand AI → Using AI For Productivity → Build Real-World Solutions</h2>
-    <div class="pill-bar">
-      1 hour | Beginner Friendly | Hands-On Projects
-    </div>
+    <div class="pill-bar">1 hour | Beginner Friendly | Hands-On Projects</div>
   </header>
 
   <main>
@@ -281,16 +251,38 @@
           <div class="click-overlay"></div>
         </div>
       </div>
-
-      <button class="sign-up-btn"
-        onclick="window.location='https://www.stemsphere.academy/products/courses/ai-made-simple'">
+      <button
+        class="sign-up-btn"
+        onclick="window.location='https://www.stemsphere.academy/products/courses/ai-made-simple'"
+      >
         Enroll Now
       </button>
     </div>
 
+    <!-- ───────────────── Reviews Section ───────────────── -->
+    <section
+      id="student-reviews"
+      style="max-width:850px; margin:3em auto; text-align:left;"
+    >
+      <h3 style="color:#FFDD00; font-size:1.5em; margin-bottom:0.5em;">
+        What Students Are Saying
+      </h3>
+      <div id="thinkific-reviews-container"></div>
+    </section>
+
+    <!-- Thinkific Reviews Widget -->
+    <script src="https://academy.stemsphere.thinkific.com/assets/public/reviews_widget.js"></script>
+    <script>
+      Thinkific.Reviews.render({
+        selector: '#thinkific-reviews-container',
+        course_id: 3105692,
+        limit: 5
+      });
+    </script>
+    <!-- ────────────────────────────────────────────────────── -->
+
     <div class="arrow-up">↑↑↑↑</div>
     <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
-
     <div class="video-message">
       <span class="intro">
         In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.
@@ -308,16 +300,15 @@
     </div>
   </main>
 
-  <footer>
-    © 2025 STEMSphere Academy. All rights reserved.
-  </footer>
+  <footer>© 2025 STEMSphere Academy. All rights reserved.</footer>
 
-  <!-- YouTube & Sign-Up Button Script -->
+  <!-- YouTube & Sign-Up Milestone Script -->
   <script>
     let player, checkInterval;
     const milestones = { signUp: 201 }; // 3:21
     const shown = { signUp: false };
 
+    // Load YouTube IFrame API
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.head.appendChild(tag);
@@ -327,39 +318,50 @@
         host: 'https://www.youtube-nocookie.com',
         videoId: 'YOUR_AI_VIDEO_ID',
         playerVars: {
-          controls: 0, disablekb: 1, fs: 0,
-          modestbranding: 1, rel: 0, iv_load_policy: 3,
-          enablejsapi: 1, autoplay: 0
+          controls: 0,
+          disablekb: 1,
+          fs: 0,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          enablejsapi: 1,
+          autoplay: 0
         },
         events: {
-          onReady: () => {
-            document.querySelector('.click-overlay')
-              .addEventListener('click', () => {
-                if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-                  document.getElementById('placeholder').style.display = 'none';
-                  document.getElementById('playBtn').style.display = 'none';
-                  document.getElementById('player').style.display = 'block';
-                  player.playVideo();
-                } else {
-                  player.pauseVideo();
-                }
-              });
-          },
-          onStateChange: e => {
-            if (e.data === YT.PlayerState.PLAYING) {
-              checkInterval = setInterval(() => {
-                const t = player.getCurrentTime();
-                if (t >= milestones.signUp && !shown.signUp) {
-                  shown.signUp = true;
-                  document.querySelector('.sign-up-btn').style.display = 'block';
-                }
-              }, 500);
-            } else {
-              clearInterval(checkInterval);
-            }
-          }
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange
         }
       });
+    }
+
+    function onPlayerReady() {
+      document.querySelector('.click-overlay')
+        .addEventListener('click', () => {
+          if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
+            document.getElementById('placeholder').style.display = 'none';
+            document.querySelector('.play-button').style.display = 'none';
+            document.getElementById('player').style.display = 'block';
+            player.playVideo();
+          }
+        });
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING && !checkInterval) {
+        checkInterval = setInterval(checkMilestones, 500);
+      } else if (event.data !== YT.PlayerState.PLAYING) {
+        clearInterval(checkInterval);
+        checkInterval = null;
+      }
+    }
+
+    function checkMilestones() {
+      const t = player.getCurrentTime();
+      if (!shown.signUp && t >= milestones.signUp) {
+        shown.signUp = true;
+        const btn = document.querySelector('.sign-up-btn');
+        btn.classList.add('visible');
+      }
     }
   </script>
 </body>
