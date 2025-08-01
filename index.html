@@ -4,11 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artificial Intelligence Made Easy</title>
-
   <style>
-    /* ──────────────────────────────────────────────────────────────────
-       Global Styles
-    ────────────────────────────────────────────────────────────────── */
+    /* ──────────────────────────────────────────────────────────────────────── */
+    /* Global Styles                                                         */
+    /* ──────────────────────────────────────────────────────────────────────── */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -16,8 +15,16 @@
       color: #fff;
       text-align: center;
     }
-    header { padding: 3em 1em 1em; }
-    .title-group { display: inline-block; margin-bottom: 0.4em; }
+
+    header {
+      padding: 3em 1em 1em;
+    }
+
+    .title-group {
+      display: inline-block;
+      margin-bottom: 0.4em;
+    }
+
     .title-group span {
       display: block;
       font-size: 2.8em;
@@ -27,12 +34,15 @@
       margin: 0.2em 0;
       line-height: 1.1em;
     }
+
+    /* Edited tagline */
     h2 {
       font-size: 1.2em;
       color: #fff;
       margin: 0.6em 0 0.4em;
       white-space: normal;
     }
+
     .pill-bar {
       display: inline-flex;
       align-items: center;
@@ -45,12 +55,14 @@
       margin-top: 0.6em;
       white-space: nowrap;
     }
+
     main {
       max-width: 850px;
       margin: auto;
       padding: 2em 1em 3em;
       position: relative;
     }
+
     .electric-frame {
       position: relative;
       padding: 10px;
@@ -64,6 +76,7 @@
       animation: flicker 1.5s infinite alternate;
       max-width: 800px;
     }
+
     @keyframes flicker {
       0% {
         box-shadow:
@@ -78,6 +91,7 @@
           0 0 24px #ffeb3b;
       }
     }
+
     .arrow-up {
       font-size: 2.2em;
       color: #FFA500;
@@ -85,12 +99,14 @@
       letter-spacing: 0.5em;
       margin: 0.3em 0 0;
     }
+
     .access-message {
       font-size: 1.35em;
       font-weight: 700;
       font-family: 'Segoe UI Semibold', sans-serif;
       margin-top: 0.3em;
     }
+
     .video-message {
       font-size: 1.15em;
       color: #ccc;
@@ -99,11 +115,13 @@
       margin-top: 1.2em;
       text-align: left;
     }
+
     .video-message .intro {
       color: #fff;
       display: block;
       margin-bottom: 1em;
     }
+
     .video-message-list-title {
       font-size: 1.15em;
       color: #ccc;
@@ -112,18 +130,21 @@
       text-align: left;
       padding: 0 1em;
     }
+
     .course-covers {
       list-style: none;
       padding-left: 1.2em;
       margin: 0 1em 2em;
       text-align: left;
     }
+
     .course-covers li {
       position: relative;
       padding-left: 1.2em;
       margin-bottom: 0.5em;
       color: #ccc;
     }
+
     .course-covers li::before {
       content: "•";
       color: #FFDD00;
@@ -132,31 +153,46 @@
       top: 0;
     }
 
-    /* PAYMENT BUTTONS (vertical list) */
+    /* ──────────────────────────────────────────────────────────────────────── */
+    /* Payment Buttons (now a grid)                                          */
+    /* ──────────────────────────────────────────────────────────────────────── */
+    .payment-intro {
+      font-size: 1.1em;
+      color: #fff;
+      margin-top: 2em;
+    }
+
     .payment-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 0.8em;
       margin: 2em 0;
+      width: 100%;
     }
+
     .payment-buttons a {
-      text-decoration: none;
-      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 0.8em 1.2em;
       border-radius: 999px;
       font-weight: 700;
-      display: inline-flex;
-      align-items: center;
+      text-decoration: none;
+      color: #fff;
       gap: 0.5em;
-      width: auto;
+      transition: transform 0.1s ease-in-out;
     }
+
+    .payment-buttons a:hover {
+      transform: scale(1.03);
+    }
+
     .btn-usa     { background: #3B82F6; }
     .btn-india   { background: #D97706; }
     .btn-nigeria { background: #059669; }
+    .btn-pk      { background: #6366F1; }
     .btn-sg      { background: #F59E0B; }
     .btn-th      { background: #EF4444; }
-    .btn-pk      { background: #6366F1; }
 
     footer {
       font-size: 0.85em;
@@ -165,9 +201,9 @@
       border-top: 1px solid #333;
     }
 
-    /* ──────────────────────────────────────────────────────────────────
-       Masked Video & Sign-Up Button Styles below (unchanged)
-    ────────────────────────────────────────────────────────────────── */
+    /* ──────────────────────────────────────────────────────────────────────── */
+    /* Masked Video & Sign-Up Button Styles (unchanged)                       */
+    /* ──────────────────────────────────────────────────────────────────────── */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -175,33 +211,43 @@
       overflow: hidden;
       border-radius: 8px;
     }
+
     .video-wrapper {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
       border-radius: 8px;
       background: #000;
     }
+
     .placeholder-frame {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
       cursor: pointer;
       z-index: 100;
     }
+
     .placeholder-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
+
     .play-button {
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      width: 80px; height: 80px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.85);
       box-shadow: 0 0 15px #ffeb3b;
@@ -210,28 +256,37 @@
       justify-content: center;
       z-index: 101;
     }
+
     .play-button::after {
       content: '';
       display: block;
-      width: 0; height: 0;
+      width: 0;
+      height: 0;
       border-left: 25px solid #000;
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
     }
+
     #player {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       display: none;
       z-index: 0;
     }
+
     .click-overlay {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 200;
       cursor: pointer;
     }
+
     .sign-up-btn {
       display: none;
       position: absolute;
@@ -247,22 +302,25 @@
       cursor: pointer;
       z-index: 900;
     }
+
     @media (max-width: 600px) {
       .title-group span { font-size: 2em; }
-      h2 { font-size: 1em; }
-      .video-message { font-size: 1em; }
-      .sign-up-btn { font-size: 0.9em; bottom: 10%; }
+      h2               { font-size: 1em; }
+      .video-message   { font-size: 1em; }
+      .sign-up-btn     { font-size: 0.9em; bottom: 10%; }
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="title-group">
       <span>Artificial Intelligence.</span>
       <span>Made Easy.</span>
     </div>
-    <h2>Understand AI → Use For Productivity → Build Solutions</h2>
+
+    <!-- 1) Updated tagline -->
+    <h2>Understand AI → Be Productivie → Build Solutions</h2>
+
     <div class="pill-bar">
       1 hour | Beginner Friendly | Hands-On Projects
     </div>
@@ -273,208 +331,73 @@
       <div class="video-container">
         <div class="video-wrapper">
           <div class="placeholder-frame" id="placeholder">
-            <img
-              src="https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg"
-              alt="AI Made Simple course thumbnail"
-            />
+            <img src="https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg"
+                 alt="AI Made Simple course thumbnail" />
           </div>
           <div class="play-button" id="playBtn"></div>
           <div id="player"></div>
           <div class="click-overlay"></div>
         </div>
       </div>
-
       <button class="sign-up-btn"
-        onclick="window.location='https://www.stemsphere.academy/products/courses/ai-made-simple'">
+              onclick="window.location='https://www.stemsphere.academy/products/courses/ai-made-simple'">
         Enroll Now
       </button>
     </div>
 
-    <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
+    <div id="reviews-container"
+         style="max-width:800px;margin:2em auto;padding:0 1em;">
+    </div>
 
     <div class="arrow-up">↑↑↑↑</div>
 
-    <!-- UPDATED SECTION START -->
     <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
+
     <div class="video-message">
       <span class="intro">
-        In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.
+        In this short but powerful 1-hour course, we’ll demystify AI in a way
+        that’s clear, engaging, and easy to understand.
       </span>
 
-      <div class="payment-buttons">
-        <a href="https://buy.stripe.com/fZueVc0F30DG5dRdk333W37" class="btn-usa">
-          🇺🇸 Pay $20 USD
-        </a>
-        <a href="https://buy.stripe.com/6oUbJ0fzX3PSeOrgwf33W38" class="btn-india">
-          🇮🇳 Pay ₹650 Rupees
-        </a>
-        <a href="https://buy.stripe.com/6oUfZg0F3868cGjbbV33W39" class="btn-nigeria">
-          🇳🇬 Pay ₦11,000 Naira
-        </a>
-        <a href="https://buy.stripe.com/00wfZgbjH5Y0gWzcfZ33W3a" class="btn-sg">
-          🇸🇬 Pay S$25 SGD
-        </a>
-        <a href="https://buy.stripe.com/3cIeVcevT0DG35Jfsb33W3b" class="btn-th">
-          🇹🇭 Pay ฿250 Thai Baht
-        </a>
-        <a href="https://buy.stripe.com/3cIfZgcnLcmo7lZeo733W3c" class="btn-pk">
-          🇵🇰 Pay PKR2,000
-        </a>
-      </div>
+      <ul class="course-covers">
+        <li>1 Hour beginner friendly course.</li>
+        <li>What AI really is (and what it isn’t)</li>
+        <li>How AI is shaping industries and everyday life</li>
+        <li>Real-world examples and use cases</li>
+        <li>Ethical questions and responsible AI</li>
+        <li>Hands-on mini projects to bring your learning to life</li>
+        <li>Using AI for productivity as a freelancer and in the workplace</li>
+      </ul>
     </div>
-    <!-- UPDATED SECTION END -->
 
+    <!-- 2) Local-currency prompt -->
+    <div class="payment-intro">🌐 Pay in your local currency.</div>
+
+    <!-- 3+4) Responsive grid + Pakistan after Nigeria -->
+    <div class="payment-buttons">
+      <a href="https://buy.stripe.com/fZueVc0F30DG5dRdk333W37" class="btn-usa">
+        🇺🇸 Pay $20 USD
+      </a>
+      <a href="https://buy.stripe.com/6oUbJ0fzX3PSeOrgwf33W38" class="btn-india">
+        🇮🇳 Pay ₹650 Rupees
+      </a>
+      <a href="https://buy.stripe.com/6oUfZg0F3868cGjbbV33W39" class="btn-nigeria">
+        🇳🇬 Pay ₦11,000 Naira
+      </a>
+      <a href="https://buy.stripe.com/3cIfZgcnLcmo7lZeo733W3c" class="btn-pk">
+        🇵🇰 Pay PKR 2,000
+      </a>
+      <a href="https://buy.stripe.com/00wfZgbjH5Y0gWzcfZ33W3a" class="btn-sg">
+        🇸🇬 Pay S$ 25 SGD
+      </a>
+      <a href="https://buy.stripe.com/YourThailandLinkHere" class="btn-th">
+        🇹🇭 Pay ฿ 650 Baht
+      </a>
+    </div>
   </main>
 
   <footer>
-    © 2025 STEMSphere Academy. All rights reserved.
+    <p>&copy; 2025 STEMSphere. All rights reserved.</p>
   </footer>
-
-  <!-- YouTube & Sign-Up Button Script -->
-  <script>
-    let player, checkInterval;
-    const milestones = { signUp: 201 };
-    const shown = { signUp: false };
-
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.head.appendChild(tag);
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        host: 'https://www.youtube.com',
-        videoId: '3gGz-jLkYoI',
-        playerVars: {
-          controls: 0, disablekb: 1, fs: 0,
-          modestbranding: 1, rel: 0, iv_load_policy: 3,
-          enablejsapi: 1, autoplay: 0
-        },
-        events: {
-          onReady: () => {
-            document.querySelector('.click-overlay').addEventListener('click', () => {
-              if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-                document.getElementById('placeholder').style.display = 'none';
-                document.getElementById('playBtn').style.display = 'none';
-                document.getElementById('player').style.display = 'block';
-                player.playVideo();
-              } else {
-                player.pauseVideo();
-              }
-            });
-          },
-          onStateChange: e => {
-            if (e.data === YT.PlayerState.PLAYING) {
-              checkInterval = setInterval(() => {
-                if (player.getCurrentTime() >= milestones.signUp && !shown.signUp) {
-                  shown.signUp = true;
-                  document.querySelector('.sign-up-btn').style.display = 'block';
-                }
-              }, 500);
-            } else {
-              clearInterval(checkInterval);
-            }
-          }
-        }
-      });
-    }
-  </script>
-
-  <!-- Reviews Dropdown Script (unchanged) -->
-  <script>
-    (async () => {
-      const slug = 'ai-made-simple';
-      const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
-      const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
-
-      const res = await fetch(csvUrl);
-      const text = await res.text();
-      const rows = text.trim().split('\n').slice(1).map(r =>
-        r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/^"|"$/g, ''))
-      );
-
-      const reviews = rows
-        .filter(r => r[4] && r[4].toLowerCase() === slug)
-        .sort((a, b) => new Date(b[3]) - new Date(a[3]));
-      if (!reviews.length) return;
-
-      const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2])||0), 0) / reviews.length).toFixed(1);
-      const count = reviews.length;
-
-      const wrapper = document.createElement('div');
-      wrapper.className = 'reviews-summary';
-      wrapper.style.cssText = `
-        margin:2em 0; padding-top:1em; border-top:1px solid #444;
-        color:#ccc; font-family:inherit;
-      `;
-      wrapper.innerHTML = `
-        <div style="margin-bottom:0.5em;">
-          <span style="
-            background:#2e7d32; color:#fff;
-            padding:0.3em 0.8em; border-radius:20px;
-            font-size:0.9em; font-weight:bold;
-          ">
-            ⭐ Purchased by students worldwide
-          </span>
-        </div>
-        <h3 style="
-          font-weight:600; margin:0.8em 0 0.6em; color:#fff;
-        ">
-          <span style="color:#FFD700; font-size:1.2em;">★</span>
-          ${avg} (${count} review${count>1?'s':''})
-        </h3>
-        <div style="display:flex; gap:0.8em; flex-wrap:wrap; margin:1em 0;">
-          <button id="toggle-reviews" style="
-            padding:0.5em 1em; font-size:0.95em;
-            background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
-            color:#f1f1f1; border:1px solid #555;
-            border-radius:6px; cursor:pointer;
-          ">See all reviews</button>
-          <button id="submit-review" style="
-            padding:0.5em 1em; font-size:0.95em;
-            background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
-            color:#f1f1f1; border:1px solid #555;
-            border-radius:6px; cursor:pointer;
-          ">Submit a review</button>
-        </div>
-        <div id="reviews-body" style="margin-top:1.2em; display:none;">
-          ${reviews.map(r => `
-            <div style="margin-bottom:1.5em;">
-              <strong style="color:#eee;">${r[0]||'Anonymous'}</strong>
-              ${'★'.repeat(+r[2]).padEnd(5,'☆')
-                .replace(/★/g, '<span style="color:#FFD700;">★</span>')
-                .replace(/☆/g, '<span style="color:#ccc;">★</span>')}<br>
-              <small style="color:#aaa;">
-                ${new Date(r[3]).toLocaleDateString()}
-              </small>
-              <p style="margin:0.4em 0 0; color:#ccc; line-height:1.4;">
-                ${r[1]}
-              </p>
-              ${r[5] ? `
-                <div style="margin-left:1em; margin-top:0.3em;">
-                  <div style="
-                    font-size:0.85em; color:#89c4ff; margin-bottom:0.2em;
-                    font-weight:600;
-                  ">Instructor Reply:</div>
-                  <div style="
-                    font-size:0.85em; color:#7fbfff; font-style:italic;
-                  ">${r[5]}</div>
-                </div>` : ''}
-            </div>
-          `).join('')}
-        </div>
-      `;
-
-      document.getElementById('reviews-container').appendChild(wrapper);
-      document.getElementById('submit-review').addEventListener('click', () => window.open(formUrl, '_blank'));
-      document.getElementById('toggle-reviews').addEventListener('click', e => {
-        const body = document.getElementById('reviews-body');
-        const show = body.style.display === 'block';
-        body.style.display = show ? 'none' : 'block';
-        e.target.textContent = show ? 'See all reviews' : 'Hide reviews';
-      });
-    })();
-  </script>
-
 </body>
 </html>
-```
