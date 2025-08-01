@@ -7,7 +7,7 @@
 
   <style>
     /* ──────────────────────────────────────────────────────────────────
-       Global Styles (adapted from Speak Theme)
+       Global Styles
     ────────────────────────────────────────────────────────────────── */
     body {
       margin: 0;
@@ -16,16 +16,8 @@
       color: #fff;
       text-align: center;
     }
-
-    header {
-      padding: 3em 1em 1em;
-    }
-
-    .title-group {
-      display: inline-block;
-      margin-bottom: 0.4em;
-    }
-
+    header { padding: 3em 1em 1em; }
+    .title-group { display: inline-block; margin-bottom: 0.4em; }
     .title-group span {
       display: block;
       font-size: 2.8em;
@@ -35,14 +27,12 @@
       margin: 0.2em 0;
       line-height: 1.1em;
     }
-
     h2 {
       font-size: 1.2em;
       color: #fff;
       margin: 0.6em 0 0.4em;
       white-space: nowrap;
     }
-
     .pill-bar {
       display: inline-flex;
       align-items: center;
@@ -55,14 +45,12 @@
       margin-top: 0.6em;
       white-space: nowrap;
     }
-
     main {
       max-width: 850px;
       margin: auto;
       padding: 2em 1em 3em;
       position: relative;
     }
-
     .electric-frame {
       position: relative;
       padding: 10px;
@@ -76,7 +64,6 @@
       animation: flicker 1.5s infinite alternate;
       max-width: 800px;
     }
-
     @keyframes flicker {
       0% {
         box-shadow:
@@ -91,7 +78,6 @@
           0 0 24px #ffeb3b;
       }
     }
-
     .arrow-up {
       font-size: 2.2em;
       color: #FFA500;
@@ -99,14 +85,12 @@
       letter-spacing: 0.5em;
       margin: 0.3em 0 0;
     }
-
     .access-message {
       font-size: 1.35em;
       font-weight: 700;
       font-family: 'Segoe UI Semibold', sans-serif;
       margin-top: 0.3em;
     }
-
     .video-message {
       font-size: 1.15em;
       color: #ccc;
@@ -115,21 +99,31 @@
       margin-top: 1.2em;
       text-align: left;
     }
-
+    .video-message .intro {
+      color: #fff;
+      display: block;
+      margin-bottom: 1em;
+    }
+    .video-message-list-title {
+      font-size: 1.15em;
+      color: #ccc;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      text-align: left;
+      padding: 0 1em;
+    }
     .course-covers {
       list-style: none;
       padding-left: 1.2em;
       margin: 0 1em 2em;
       text-align: left;
     }
-
     .course-covers li {
       position: relative;
       padding-left: 1.2em;
       margin-bottom: 0.5em;
       color: #ccc;
     }
-
     .course-covers li::before {
       content: "•";
       color: #FFDD00;
@@ -137,7 +131,6 @@
       left: 0;
       top: 0;
     }
-
     footer {
       font-size: 0.85em;
       color: #bbb;
@@ -146,7 +139,7 @@
     }
 
     /* ──────────────────────────────────────────────────────────────────
-       Masked Video Styles & Custom Cover
+       Masked Video Styles
     ────────────────────────────────────────────────────────────────── */
     .video-container {
       position: relative;
@@ -155,7 +148,6 @@
       overflow: hidden;
       border-radius: 8px;
     }
-
     .video-wrapper {
       position: absolute;
       top: 0; left: 0;
@@ -164,23 +156,16 @@
       border-radius: 8px;
       background: #000;
     }
-
     .placeholder-frame {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: none !important;
+      background-image: url('https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg');
+      background-size: cover;
+      background-position: center;
       cursor: pointer;
       z-index: 100;
     }
-
-    .placeholder-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
     .play-button {
       position: absolute;
       top: 50%; left: 50%;
@@ -194,7 +179,6 @@
       justify-content: center;
       z-index: 101;
     }
-
     .play-button::after {
       content: '';
       display: block;
@@ -203,7 +187,6 @@
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
     }
-
     #player {
       position: absolute;
       top: 0; left: 0;
@@ -211,7 +194,6 @@
       display: none;
       z-index: 0;
     }
-
     .click-overlay {
       position: absolute;
       top: 0; left: 0;
@@ -238,7 +220,6 @@
       cursor: pointer;
       z-index: 900;
     }
-
     @media (max-width: 600px) {
       .title-group span { font-size: 2em; }
       h2 { font-size: 1em; }
@@ -254,7 +235,7 @@
       <span>Artificial Intelligence.</span>
       <span>Made Easy.</span>
     </div>
-    <h2>Understand AI → Use For Productivity → Build Solutions</h2>
+    <h2>Understand AI → Using AI For Productivity → Build Real-World Solutions</h2>
     <div class="pill-bar">
       1 hour | Beginner Friendly | Hands-On Projects
     </div>
@@ -264,15 +245,7 @@
     <div class="electric-frame">
       <div class="video-container">
         <div class="video-wrapper">
-
-          <!-- custom cover -->
-          <div class="placeholder-frame" id="placeholder">
-            <img
-              src="https://drive.google.com/uc?export=download&id=1B-YCg4U3rLy4rPCynrNbJqfGMCQAI0l6"
-              alt="AI Made Simple course thumbnail"
-            />
-          </div>
-
+          <div class="placeholder-frame" id="placeholder"></div>
           <div class="play-button" id="playBtn"></div>
           <div id="player"></div>
           <div class="click-overlay"></div>
@@ -285,13 +258,17 @@
       </button>
     </div>
 
-    <!-- Reviews dropdown -->
+    <!-- ↓↓↓ Reviews dropdown injected here ↓↓↓ -->
     <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
 
     <div class="arrow-up">↑↑↑↑</div>
-    <div class="access-message">What the Course Covers</div>
+    <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
 
     <div class="video-message">
+      <span class="intro">
+        In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.
+      </span>
+      <div class="video-message-list-title">What the course covers:</div>
       <ul class="course-covers">
         <li>1 Hour beginner friendly course.</li>
         <li>What AI really is (and what it isn’t)</li>
@@ -329,22 +306,22 @@
         },
         events: {
           onReady: () => {
-            document.querySelector('.click-overlay')
-              .addEventListener('click', () => {
-                if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-                  document.getElementById('placeholder').style.display = 'none';
-                  document.getElementById('playBtn').style.display = 'none';
-                  document.getElementById('player').style.display = 'block';
-                  player.playVideo();
-                } else {
-                  player.pauseVideo();
-                }
-              });
+            document.querySelector('.click-overlay').addEventListener('click', () => {
+              if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
+                document.getElementById('placeholder').style.display = 'none';
+                document.getElementById('playBtn').style.display = 'none';
+                document.getElementById('player').style.display = 'block';
+                player.playVideo();
+              } else {
+                player.pauseVideo();
+              }
+            });
           },
           onStateChange: e => {
             if (e.data === YT.PlayerState.PLAYING) {
               checkInterval = setInterval(() => {
-                if (player.getCurrentTime() >= milestones.signUp && !shown.signUp) {
+                const t = player.getCurrentTime();
+                if (t >= milestones.signUp && !shown.signUp) {
                   shown.signUp = true;
                   document.querySelector('.sign-up-btn').style.display = 'block';
                 }
@@ -358,7 +335,7 @@
     }
   </script>
 
-  <!-- Reviews Dropdown Script -->
+  <!-- ✅ Reviews Dropdown Script -->
   <script>
   (async () => {
     const slug = 'ai-made-simple';
@@ -376,7 +353,7 @@
       .sort((a, b) => new Date(b[3]) - new Date(a[3]));
     if (!reviews.length) return;
 
-    const avg = (reviews.reduce((sum, r) => sum + parseFloat(r[2]||0), 0) / reviews.length).toFixed(1);
+    const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2])||0), 0) / reviews.length).toFixed(1);
     const count = reviews.length;
 
     const wrapper = document.createElement('div');
@@ -444,14 +421,15 @@
     `;
 
     document.getElementById('reviews-container').appendChild(wrapper);
+
     document.getElementById('submit-review')
       .addEventListener('click', () => window.open(formUrl, '_blank'));
     document.getElementById('toggle-reviews')
       .addEventListener('click', e => {
         const body = document.getElementById('reviews-body');
-        const show = body.style.display === 'block';
-        body.style.display = show ? 'none' : 'block';
-        e.target.textContent = show ? 'See all reviews' : 'Hide reviews';
+        const showing = body.style.display === 'block';
+        body.style.display = showing ? 'none' : 'block';
+        e.target.textContent = showing ? 'See all reviews' : 'Hide reviews';
       });
   })();
   </script>
@@ -459,3 +437,4 @@
 </body>
 </html>
 ```
+
