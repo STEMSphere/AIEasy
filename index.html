@@ -156,7 +156,6 @@
       border-radius: 8px;
       background: #000;
     }
-    /* Updated placeholder to load YouTube’s custom thumbnail */
     .placeholder-frame {
       position: absolute;
       top: 0; left: 0;
@@ -250,10 +249,10 @@
     <div class="electric-frame">
       <div class="video-container">
         <div class="video-wrapper">
-          <!-- show your actual YouTube thumbnail here -->
+          <!-- Your Google Drive–hosted cover image -->
           <div class="placeholder-frame" id="placeholder">
             <img
-              src="https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg"
+              src="https://drive.google.com/uc?export=view&id=1B-YCg4U3rLy4rPCynrNbJqfGMCQAI0l6"
               alt="AI Made Simple course thumbnail"
             />
           </div>
@@ -269,7 +268,6 @@
       </button>
     </div>
 
-    <!-- ↓↓↓ Reviews dropdown injected here ↓↓↓ -->
     <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
 
     <div class="arrow-up">↑↑↑↑</div>
@@ -331,8 +329,7 @@
           onStateChange: e => {
             if (e.data === YT.PlayerState.PLAYING) {
               checkInterval = setInterval(() => {
-                const t = player.getCurrentTime();
-                if (t >= milestones.signUp && !shown.signUp) {
+                if (player.getCurrentTime() >= milestones.signUp && !shown.signUp) {
                   shown.signUp = true;
                   document.querySelector('.sign-up-btn').style.display = 'block';
                 }
@@ -346,7 +343,7 @@
     }
   </script>
 
-  <!-- ✅ Reviews Dropdown Script -->
+  <!-- Reviews Dropdown Script -->
   <script>
   (async () => {
     const slug = 'ai-made-simple';
@@ -364,7 +361,7 @@
       .sort((a, b) => new Date(b[3]) - new Date(a[3]));
     if (!reviews.length) return;
 
-    const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2]) || 0), 0) / reviews.length).toFixed(1);
+    const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2])||0), 0) / reviews.length).toFixed(1);
     const count = reviews.length;
 
     const wrapper = document.createElement('div');
@@ -437,13 +434,12 @@
     document.getElementById('toggle-reviews')
       .addEventListener('click', e => {
         const body = document.getElementById('reviews-body');
-        const showing = body.style.display === 'block';
-        body.style.display = showing ? 'none' : 'block';
-        e.target.textContent = showing ? 'See all reviews' : 'Hide reviews';
+        const show = body.style.display === 'block';
+        body.style.display = show ? 'none' : 'block';
+        e.target.textContent = show ? 'See all reviews' : 'Hide reviews';
       });
   })();
   </script>
 
 </body>
 </html>
-```
