@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artificial Intelligence Made Easy</title>
+
+  <style>
+    /* Global Reset & Body */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+           color: #333; line-height: 1.6; }
+
+    /* Header */
+    header { padding: 60px 20px; background: #f7f7f7; text-align: center; }
+    .title-group span { display: block; font-size: 2.5rem; font-weight: 700; }
+    header h2 { margin-top: 20px; font-size: 1.25rem; color: #555; }
+    .pill-bar {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #e0e0e0;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    /* Hero Video */
+    .hero { padding: 40px 0; text-align: center; }
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 */
+      margin: 0 auto;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    }
+    .video-container .play-button {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 80px; height: 80px;
+      transform: translate(-50%, -50%);
+      background: url('https://cdn-icons-png.flaticon.com/512/0/375.png') no-repeat center;
+      background-size: contain;
+    }
+
+    /* Features Section */
+    .features { display: flex; flex-wrap: wrap; justify-content: center; padding: 60px 20px; }
+    .feature {
+      flex: 1 1 280px;
+      max-width: 320px;
+      margin: 20px;
+      text-align: left;
+    }
+    .feature h3 { margin-bottom: 10px; font-size: 1.2rem; color: #222; }
+    .feature p { color: #555; }
+
+    /* Call to Action */
+    .cta { padding: 60px 20px; text-align: center; }
+    .sign-up-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1rem;
+      color: #fff;
+      background: #0070f3;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      padding: 20px;
+      background: #222;
+      color: #eee;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="title-group">
+      <span>Artificial Intelligence.</span>
+      <span>Made Easy.</span>
+    </div>
+    <h2>Understand AI → Build Real-World Solutions → Lead the Future</h2>
+    <div class="pill-bar">
+      Self-Paced Learning | Live Workshops | Expert Mentoring
+    </div>
+  </header>
+
+  <!-- HERO VIDEO -->
+  <section class="hero">
+    <div class="video-container" data-video-id="YOUR_VIDEO_ID"></div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="feature">
+      <h3>Hands-On Projects</h3>
+      <p>Work through real-world examples—from chatbots to image recognition—to cement your skills.</p>
+    </div>
+    <div class="feature">
+      <h3>Expert Instructors</h3>
+      <p>Learn from AI practitioners at top tech companies who break down complex topics into bite-size lessons.</p>
+    </div>
+    <div class="feature">
+      <h3>Community Support</h3>
+      <p>Join our active Slack group for peer help, AMAs, and continuous learning opportunities.</p>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section class="cta">
+    <a href="https://buy.stripe.com/XXXXXXXXXX" class="sign-up-btn">
+      Enroll Now – $49
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 STEMSphere • <a href="/privacy.html" style="color:#aaa;">Privacy Policy</a>
+  </footer>
+
+  <!-- YOUTUBE LAZY-LOAD SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.video-container');
+      const videoId = container.dataset.videoId;
+      const thumbUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+      container.style.backgroundImage = `url('${thumbUrl}')`;
+      const playBtn = document.createElement('div');
+      playBtn.className = 'play-button';
+      container.appendChild(playBtn);
+
+      container.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1`);
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        container.innerHTML = '';
+        container.appendChild(iframe);
+      });
+    });
+  </script>
+
+</body>
+</html>
