@@ -53,7 +53,7 @@
       font-size: 0.95em;
       color: #fff;
       margin-top: 0.6em;
-      white-space: nowrap; /* keep on one line */
+      white-space: nowrap;
     }
 
     main {
@@ -116,14 +116,12 @@
       text-align: left;
     }
 
-    /* make first sentence white */
     .video-message .intro {
       color: #fff;
       display: block;
       margin-bottom: 1em;
     }
 
-    /* title for bullet list */
     .video-message-list-title {
       font-size: 1.15em;
       color: #ccc;
@@ -133,19 +131,20 @@
       padding: 0 1em;
     }
 
-    /* bullet list styling */
     .course-covers {
       list-style: none;
       padding-left: 1.2em;
       margin: 0 1em 2em;
       text-align: left;
     }
+
     .course-covers li {
       position: relative;
       padding-left: 1.2em;
       margin-bottom: 0.5em;
       color: #ccc;
     }
+
     .course-covers li::before {
       content: "•";
       color: #FFDD00;
@@ -257,6 +256,9 @@
       .sign-up-btn { font-size: 0.9em; bottom: 10%; }
     }
   </style>
+
+  <!-- Tabletop.js to fetch your sheet via “anyone-with-link” -->
+  <script src="https://cdn.jsdelivr.net/npm/tabletop@1.5.1/tabletop.js"></script>
 </head>
 <body>
 
@@ -308,6 +310,12 @@
     </div>
   </main>
 
+  <!-- 🌟 Student Reviews Section -->
+  <section id="reviews" style="max-width:800px; margin:3em auto; text-align:left; padding:0 1em;">
+    <h2 style="color:#FFDD00; font-size:2em; margin-bottom:0.5em;">🌟 Student Reviews</h2>
+    <!-- Cards will be injected here -->
+  </section>
+
   <footer>
     © 2025 STEMSphere Academy. All rights reserved.
   </footer>
@@ -315,7 +323,7 @@
   <!-- YouTube & Sign-Up Button Script -->
   <script>
     let player, checkInterval;
-    const milestones = { signUp: 201 }; // 3:21
+    const milestones = { signUp: 201 }; // show button at 3:21
     const shown = { signUp: false };
 
     const tag = document.createElement('script');
@@ -362,6 +370,40 @@
       });
     }
   </script>
+
+  <!-- Tabletop.js init to fetch & render your reviews -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      Tabletop.init({
+        key: 'https://docs.google.com/spreadsheets/d/1G_qPmkOORlocqXNpGvvJbfV1BwgRwymKJM0SwAOIAE4/edit?usp=sharing',
+        simpleSheet: true,
+        callback: renderReviews
+      });
+
+      function renderReviews(data) {
+        const container = document.getElementById('reviews');
+        data.forEach(item => {
+          const card = document.createElement('div');
+          card.style.cssText = `
+            border:1px solid #444;
+            background:#111;
+            padding:1em;
+            border-radius:8px;
+            margin-bottom:1em;
+          `;
+          card.innerHTML = `
+            <h3 style="margin:0 0.5em 0.5em; color:#FFDD00;">
+              ${item.Name || 'Anonymous'}
+            </h3>
+            <p style="margin:0 0.5em; color:#ccc;">
+              ${item.Review || 'No review provided.'}
+            </p>
+          `;
+          container.appendChild(card);
+        });
+      }
+    });
+  </script>
+
 </body>
 </html>
-```
