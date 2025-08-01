@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial‐scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artificial Intelligence Made Easy</title>
+
   <style>
-    /* ──────────────────────────────────────────────────────────────────────────
-       Global Styles (adapted from Speak Theme)
-       ────────────────────────────────────────────────────────────────────────── */
+    /* ──────────────────────────────────────────────────────────────────
+       Global Styles
+    ────────────────────────────────────────────────────────────────── */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -15,16 +16,8 @@
       color: #fff;
       text-align: center;
     }
-
-    header {
-      padding: 3em 1em 1em;
-    }
-
-    .title-group {
-      display: inline-block;
-      margin-bottom: 0.4em;
-    }
-
+    header { padding: 3em 1em 1em; }
+    .title-group { display: inline-block; margin-bottom: 0.4em; }
     .title-group span {
       display: block;
       font-size: 2.8em;
@@ -34,14 +27,12 @@
       margin: 0.2em 0;
       line-height: 1.1em;
     }
-
     h2 {
       font-size: 1.2em;
       color: #fff;
       margin: 0.6em 0 0.4em;
       white-space: nowrap;
     }
-
     .pill-bar {
       display: inline-flex;
       align-items: center;
@@ -54,14 +45,12 @@
       margin-top: 0.6em;
       white-space: nowrap;
     }
-
     main {
       max-width: 850px;
       margin: auto;
       padding: 2em 1em 3em;
       position: relative;
     }
-
     .electric-frame {
       position: relative;
       padding: 10px;
@@ -75,7 +64,6 @@
       animation: flicker 1.5s infinite alternate;
       max-width: 800px;
     }
-
     @keyframes flicker {
       0% {
         box-shadow:
@@ -90,7 +78,6 @@
           0 0 24px #ffeb3b;
       }
     }
-
     .arrow-up {
       font-size: 2.2em;
       color: #FFA500;
@@ -98,14 +85,12 @@
       letter-spacing: 0.5em;
       margin: 0.3em 0 0;
     }
-
     .access-message {
       font-size: 1.35em;
       font-weight: 700;
       font-family: 'Segoe UI Semibold', sans-serif;
       margin-top: 0.3em;
     }
-
     .video-message {
       font-size: 1.15em;
       color: #ccc;
@@ -114,21 +99,31 @@
       margin-top: 1.2em;
       text-align: left;
     }
-
+    .video-message .intro {
+      color: #fff;
+      display: block;
+      margin-bottom: 1em;
+    }
+    .video-message-list-title {
+      font-size: 1.15em;
+      color: #ccc;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      text-align: left;
+      padding: 0 1em;
+    }
     .course-covers {
       list-style: none;
       padding-left: 1.2em;
       margin: 0 1em 2em;
       text-align: left;
     }
-
     .course-covers li {
       position: relative;
       padding-left: 1.2em;
       margin-bottom: 0.5em;
       color: #ccc;
     }
-
     .course-covers li::before {
       content: "•";
       color: #FFDD00;
@@ -136,7 +131,6 @@
       left: 0;
       top: 0;
     }
-
     footer {
       font-size: 0.85em;
       color: #bbb;
@@ -144,9 +138,9 @@
       border-top: 1px solid #333;
     }
 
-    /* ──────────────────────────────────────────────────────────────────────────
+    /* ──────────────────────────────────────────────────────────────────
        Masked Video Styles
-       ────────────────────────────────────────────────────────────────────────── */
+    ────────────────────────────────────────────────────────────────── */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -154,38 +148,29 @@
       overflow: hidden;
       border-radius: 8px;
     }
-
     .video-wrapper {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       overflow: hidden;
       border-radius: 8px;
       background: #000;
     }
-
     .placeholder-frame {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-image: url('https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg');
       background-size: cover;
       background-position: center;
       cursor: pointer;
       z-index: 100;
     }
-
     .play-button {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
+      width: 80px; height: 80px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.85);
       box-shadow: 0 0 15px #ffeb3b;
@@ -194,40 +179,32 @@
       justify-content: center;
       z-index: 101;
     }
-
     .play-button::after {
       content: '';
       display: block;
-      width: 0;
-      height: 0;
+      width: 0; height: 0;
       border-left: 25px solid #000;
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
     }
-
     #player {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       display: none;
       z-index: 0;
     }
-
     .click-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 200;
       cursor: pointer;
     }
 
-    /* ──────────────────────────────────────────────────────────────────────────
+    /* ──────────────────────────────────────────────────────────────────
        Sign-Up Button Styles
-       ────────────────────────────────────────────────────────────────────────── */
+    ────────────────────────────────────────────────────────────────── */
     .sign-up-btn {
       display: none;
       position: absolute;
@@ -243,7 +220,6 @@
       cursor: pointer;
       z-index: 900;
     }
-
     @media (max-width: 600px) {
       .title-group span { font-size: 2em; }
       h2 { font-size: 1em; }
@@ -252,14 +228,14 @@
     }
   </style>
 </head>
-
 <body>
+
   <header>
     <div class="title-group">
       <span>Artificial Intelligence.</span>
       <span>Made Easy.</span>
     </div>
-    <h2>Understand AI → Use For Productivity → Build Solutions</h2>
+    <h2>Understand AI → Using AI For Productivity → Build Real-World Solutions</h2>
     <div class="pill-bar">
       1 hour | Beginner Friendly | Hands-On Projects
     </div>
@@ -275,19 +251,24 @@
           <div class="click-overlay"></div>
         </div>
       </div>
-      <button
-        class="sign-up-btn"
-        onclick="window.location='https://www.stemsphere.academy/products/courses/ai-made-simple'"
-      >
+
+      <button class="sign-up-btn"
+        onclick="window.location='https://www.stemsphere.academy/products/courses/ai-made-simple'">
         Enroll Now
       </button>
     </div>
 
-    <div class="arrow-up">↑↑↑↑</div>
+    <!-- ↓↓↓ Reviews dropdown injected here ↓↓↓ -->
+    <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
 
-    <div class="access-message">What the Course Covers</div>
+    <div class="arrow-up">↑↑↑↑</div>
+    <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
 
     <div class="video-message">
+      <span class="intro">
+        In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.
+      </span>
+      <div class="video-message-list-title">What the course covers:</div>
       <ul class="course-covers">
         <li>1 Hour beginner friendly course.</li>
         <li>What AI really is (and what it isn’t)</li>
@@ -306,8 +287,7 @@
 
   <!-- YouTube & Sign-Up Button Script -->
   <script>
-    let player,
-        checkInterval;
+    let player, checkInterval;
     const milestones = { signUp: 201 };
     const shown = { signUp: false };
 
@@ -317,40 +297,31 @@
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        host: 'https://www.youtube-nocookie.com',
+        host: 'https://www.youtube.com',
         videoId: '3gGz-jLkYoI',
         playerVars: {
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          modestbranding: 1,
-          rel: 0,
-          iv_load_policy: 3,
-          enablejsapi: 1,
-          autoplay: 0
+          controls: 0, disablekb: 1, fs: 0,
+          modestbranding: 1, rel: 0, iv_load_policy: 3,
+          enablejsapi: 1, autoplay: 0
         },
         events: {
           onReady: () => {
-            document
-              .querySelector('.click-overlay')
-              .addEventListener('click', () => {
-                if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-                  document.getElementById('placeholder').style.display = 'none';
-                  document.getElementById('playBtn').style.display = 'none';
-                  document.getElementById('player').style.display = 'block';
-                  player.playVideo();
-                } else {
-                  player.pauseVideo();
-                }
-              });
+            document.querySelector('.click-overlay').addEventListener('click', () => {
+              if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
+                document.getElementById('placeholder').style.display = 'none';
+                document.getElementById('playBtn').style.display = 'none';
+                document.getElementById('player').style.display = 'block';
+                player.playVideo();
+              } else {
+                player.pauseVideo();
+              }
+            });
           },
           onStateChange: e => {
             if (e.data === YT.PlayerState.PLAYING) {
               checkInterval = setInterval(() => {
-                if (
-                  player.getCurrentTime() >= milestones.signUp &&
-                  !shown.signUp
-                ) {
+                const t = player.getCurrentTime();
+                if (t >= milestones.signUp && !shown.signUp) {
                   shown.signUp = true;
                   document.querySelector('.sign-up-btn').style.display = 'block';
                 }
@@ -364,78 +335,106 @@
     }
   </script>
 
-  <!-- Reviews Dropdown Script (unchanged) -->
+  <!-- ✅ Reviews Dropdown Script -->
   <script>
-    (async () => {
-      const slug = 'ai-made-simple';
-      const csvUrl =
-        'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
-      const formUrl =
-        'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
+  (async () => {
+    const slug = 'ai-made-simple';
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
 
-      const res = await fetch(csvUrl);
-      const text = await res.text();
-      const rows = text
-        .trim()
-        .split('\n')
-        .slice(1)
-        .map(r =>
-          r
-            .split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/)
-            .map(c => c.replace(/^"|"$/g, ''))
-        );
+    const res = await fetch(csvUrl);
+    const text = await res.text();
+    const rows = text.trim().split('\n').slice(1).map(r =>
+      r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/^"|"$/g, ''))
+    );
 
-      const reviews = rows
-        .filter(r => r[4] && r[4].toLowerCase() === slug)
-        .sort((a, b) => new Date(b[3]) - new Date(a[3]));
+    const reviews = rows
+      .filter(r => r[4] && r[4].toLowerCase() === slug)
+      .sort((a, b) => new Date(b[3]) - new Date(a[3]));
+    if (!reviews.length) return;
 
-      if (!reviews.length) return;
+    const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2])||0), 0) / reviews.length).toFixed(1);
+    const count = reviews.length;
 
-      const avg = (
-        reviews.reduce((sum, r) => sum + parseFloat(r[2] || 0), 0) /
-        reviews.length
-      ).toFixed(1);
-      const count = reviews.length;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'reviews-summary';
+    wrapper.style.cssText = `
+      margin:2em 0; padding-top:1em; border-top:1px solid #444;
+      color:#ccc; font-family:inherit;
+    `;
+    wrapper.innerHTML = `
+      <div style="margin-bottom:0.5em;">
+        <span style="
+          background:#2e7d32; color:#fff;
+          padding:0.3em 0.8em; border-radius:20px;
+          font-size:0.9em; font-weight:bold;
+        ">
+          ⭐ Purchased by students worldwide
+        </span>
+      </div>
+      <h3 style="
+        font-weight:600; margin:0.8em 0 0.6em; color:#fff;
+      ">
+        <span style="color:#FFD700; font-size:1.2em;">★</span>
+        ${avg} (${count} review${count>1?'s':''})
+      </h3>
+      <div style="display:flex; gap:0.8em; flex-wrap:wrap; margin:1em 0;">
+        <button id="toggle-reviews" style="
+          padding:0.5em 1em; font-size:0.95em;
+          background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
+          color:#f1f1f1; border:1px solid #555;
+          border-radius:6px; cursor:pointer;
+        ">See all reviews</button>
+        <button id="submit-review" style="
+          padding:0.5em 1em; font-size:0.95em;
+          background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
+          color:#f1f1f1; border:1px solid #555;
+          border-radius:6px; cursor:pointer;
+        ">Submit a review</button>
+      </div>
+      <div id="reviews-body" style="margin-top:1.2em; display:none;">
+        ${reviews.map(r => `
+          <div style="margin-bottom:1.5em;">
+            <strong style="color:#eee;">${r[0]||'Anonymous'}</strong>
+            ${'★'.repeat(+r[2]).padEnd(5,'☆')
+              .replace(/★/g, '<span style="color:#FFD700;">★</span>')
+              .replace(/☆/g, '<span style="color:#ccc;">★</span>')}<br>
+            <small style="color:#aaa;">
+              ${new Date(r[3]).toLocaleDateString()}
+            </small>
+            <p style="margin:0.4em 0 0; color:#ccc; line-height:1.4;">
+              ${r[1]}
+            </p>
+            ${r[5] ? `
+              <div style="margin-left:1em; margin-top:0.3em;">
+                <div style="
+                  font-size:0.85em; color:#89c4ff; margin-bottom:0.2em;
+                  font-weight:600;
+                ">Instructor Reply:</div>
+                <div style="
+                  font-size:0.85em; color:#7fbfff; font-style:italic;
+                ">${r[5]}</div>
+              </div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
 
-      const wrapper = document.createElement('div');
-      wrapper.className = 'reviews-summary';
-      wrapper.style.cssText = `
-        margin:2em 0;
-        padding-top:1em;
-        border-top:1px solid #444;
-        color:#ccc;
-        font-family:inherit;
-      `;
+    document.getElementById('reviews-container').appendChild(wrapper);
 
-      wrapper.innerHTML = `
-        <div style="margin-bottom:0.5em;">
-          <span style="
-            background:#2e7d32;
-            color:#fff;
-            padding:0.3em 0.8em;
-            border-radius:4px;
-            font-size:0.9em;
-          ">
-            ${avg} ★ (${count})
-          </span>
-          <a
-            href="${formUrl}"
-            target="_blank"
-            style="
-              color:#fff;
-              margin-left:0.5em;
-              font-size:0.9em;
-              text-decoration:underline;
-            "
-          >
-            Read all reviews
-          </a>
-        </div>
-      `;
-
-      document.querySelector('main').appendChild(wrapper);
-    })();
+    document.getElementById('submit-review')
+      .addEventListener('click', () => window.open(formUrl, '_blank'));
+    document.getElementById('toggle-reviews')
+      .addEventListener('click', e => {
+        const body = document.getElementById('reviews-body');
+        const showing = body.style.display === 'block';
+        body.style.display = showing ? 'none' : 'block';
+        e.target.textContent = showing ? 'See all reviews' : 'Hide reviews';
+      });
+  })();
   </script>
+
 </body>
 </html>
 ```
+
