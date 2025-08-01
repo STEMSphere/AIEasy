@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Artificial Intelligence Made Easy</title>
-
   <style>
     /* ──────────────────────────────────────────────────────────────────
        Global Styles
@@ -16,8 +15,13 @@
       color: #fff;
       text-align: center;
     }
-    header { padding: 3em 1em 1em; }
-    .title-group { display: inline-block; margin-bottom: 0.4em; }
+    header {
+      padding: 3em 1em 1em;
+    }
+    .title-group {
+      display: inline-block;
+      margin-bottom: 0.4em;
+    }
     .title-group span {
       display: block;
       font-size: 2.8em;
@@ -31,7 +35,6 @@
       font-size: 1.2em;
       color: #fff;
       margin: 0.6em 0 0.4em;
-      white-space: normal;
     }
     .pill-bar {
       display: inline-flex;
@@ -43,8 +46,8 @@
       font-size: 0.95em;
       color: #fff;
       margin-top: 0.6em;
-      white-space: nowrap;
     }
+
     main {
       max-width: 850px;
       margin: auto;
@@ -132,24 +135,43 @@
       top: 0;
     }
 
-    /* PAYMENT BUTTONS (original vertical list) */
+    /* ──────────────────────────────────────────────────────────────────
+       PAYMENT CARD & BUTTONS
+    ────────────────────────────────────────────────────────────────── */
+    .payment-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5em;
+      margin: 2em 0;
+      text-align: left;
+      color: #333;
+    }
+    .payment-card .payment-intro {
+      font-weight: 600;
+      margin-bottom: 1em;
+    }
     .payment-buttons {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
       gap: 0.8em;
-      margin: 2em 0;
     }
     .payment-buttons a {
-      text-decoration: none;
-      color: #fff;
-      padding: 0.8em 1.2em;
-      border-radius: 999px;
-      font-weight: 700;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5em;
-      width: auto;
+      text-decoration: none;
+      color: #fff;
+      padding: 0.8em 1em;
+      border-radius: 999px;
+      font-weight: 700;
+      width: 100%;
+      box-sizing: border-box;
+      transition: transform 0.15s ease;
+    }
+    .payment-buttons a:hover {
+      transform: translateY(-2px);
     }
     .btn-usa     { background: #3B82F6; }
     .btn-india   { background: #D97706; }
@@ -166,7 +188,7 @@
     }
 
     /* ──────────────────────────────────────────────────────────────────
-       Masked Video & Sign-Up Button Styles below (unchanged)
+       Masked Video & Sign-Up Button Styles
     ────────────────────────────────────────────────────────────────── */
     .video-container {
       position: relative;
@@ -256,14 +278,12 @@
   </style>
 </head>
 <body>
-
   <header>
     <div class="title-group">
       <span>Artificial Intelligence.</span>
       <span>Made Easy.</span>
     </div>
-    <!-- 1) Updated tagline -->
-    <h2>Understand AI → Be Productivie → Build Solutions</h2>
+    <h2>Understand AI → Be Productive → Build Solutions</h2>
     <div class="pill-bar">
       1 hour | Beginner Friendly | Hands-On Projects
     </div>
@@ -284,7 +304,6 @@
           <div class="click-overlay"></div>
         </div>
       </div>
-
       <button class="sign-up-btn"
         onclick="window.location='https://www.stemsphere.academy/products/courses/ai-made-simple'">
         Enroll Now
@@ -294,12 +313,8 @@
     <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
 
     <div class="arrow-up">↑↑↑↑</div>
-
-    <!-- UPDATED SECTION START -->
     <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
     <div class="video-message">
-      <!-- 2) Removed intro paragraph -->
-      <!-- 3) Features list inserted -->
       <ul class="feature-list">
         <li>1 Hour beginner friendly course.</li>
         <li>What AI really is (and what it isn’t)</li>
@@ -310,9 +325,8 @@
         <li>Using AI for productivity as a freelancer and in the workplace</li>
       </ul>
 
-      <!-- 4) White card around pay buttons -->
       <div class="payment-card">
-        <div class="payment-intro">🌐 Pay in your local currency.</div>
+        <div class="payment-intro">🌐 Pay in your local currency</div>
         <div class="payment-buttons">
           <a href="https://buy.stripe.com/fZueVc0F30DG5dRdk333W37" class="btn-usa">
             🇺🇸 Pay $20 USD
@@ -335,8 +349,6 @@
         </div>
       </div>
     </div>
-    <!-- UPDATED SECTION END -->
-
   </main>
 
   <footer>
@@ -392,7 +404,7 @@
     }
   </script>
 
-  <!-- Reviews Dropdown Script (unchanged) -->
+  <!-- Reviews Dropdown Script -->
   <script>
     (async () => {
       const slug = 'ai-made-simple';
@@ -476,9 +488,8 @@
           `).join('')}
         </div>
       `;
-
       document.getElementById('reviews-container').appendChild(wrapper);
-      document.getElementById('submit-review').addEventListener('click', () => window.open(formUrl, '_blank'));
+      document.getElementById('submit-review').addEventListener('click', ()=> window.open(formUrl, '_blank'));
       document.getElementById('toggle-reviews').addEventListener('click', e => {
         const body = document.getElementById('reviews-body');
         const show = body.style.display === 'block';
@@ -489,3 +500,4 @@
   </script>
 </body>
 </html>
+```
