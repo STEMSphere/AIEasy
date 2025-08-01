@@ -156,12 +156,14 @@
       border-radius: 8px;
       background: #000;
     }
+
+    /* ← replace the old static cover rules with these: */
     .placeholder-frame {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      cursor: pointer;
       overflow: hidden;
+      cursor: pointer;
       z-index: 100;
     }
     .placeholder-frame img {
@@ -170,6 +172,7 @@
       object-fit: cover;
       display: block;
     }
+
     .play-button {
       position: absolute;
       top: 50%; left: 50%;
@@ -249,13 +252,23 @@
     <div class="electric-frame">
       <div class="video-container">
         <div class="video-wrapper">
-          <!-- use your actual YouTube thumbnail here -->
+          <!-- ← YOUR CUSTOM COVER HERE ↓ -->
           <div class="placeholder-frame" id="placeholder">
+            <!--
+              For YouTube’s own thumbnail:
+              -->
             <img
               src="https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg"
               alt="AI Made Simple course thumbnail"
             />
+
+            <!--
+              Or, if you’d rather host on Google Drive,
+              first share publicly and swap in a direct link:
+              https://drive.google.com/uc?export=view&id=YOUR_FILE_ID
+            -->
           </div>
+
           <div class="play-button" id="playBtn"></div>
           <div id="player"></div>
           <div class="click-overlay"></div>
@@ -268,12 +281,10 @@
       </button>
     </div>
 
-    <!-- ↓↓↓ Reviews dropdown injected here ↓↓↓ -->
     <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
 
     <div class="arrow-up">↑↑↑↑</div>
     <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
-
     <div class="video-message">
       <span class="intro">
         In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.
@@ -330,8 +341,7 @@
           onStateChange: e => {
             if (e.data === YT.PlayerState.PLAYING) {
               checkInterval = setInterval(() => {
-                const t = player.getCurrentTime();
-                if (t >= milestones.signUp && !shown.signUp) {
+                if (player.getCurrentTime() >= milestones.signUp && !shown.signUp) {
                   shown.signUp = true;
                   document.querySelector('.sign-up-btn').style.display = 'block';
                 }
@@ -345,7 +355,7 @@
     }
   </script>
 
-  <!-- ✅ Reviews Dropdown Script -->
+  <!-- Reviews Dropdown Script (unchanged) -->
   <script>
   (async () => {
     const slug = 'ai-made-simple';
@@ -431,18 +441,15 @@
     `;
 
     document.getElementById('reviews-container').appendChild(wrapper);
-    document.getElementById('submit-review')
-      .addEventListener('click', () => window.open(formUrl, '_blank'));
-    document.getElementById('toggle-reviews')
-      .addEventListener('click', e => {
-        const body = document.getElementById('reviews-body');
-        const showing = body.style.display === 'block';
-        body.style.display = showing ? 'none' : 'block';
-        e.target.textContent = showing ? 'See all reviews' : 'Hide reviews';
-      });
+    document.getElementById('submit-review').addEventListener('click', () => window.open(formUrl, '_blank'));
+    document.getElementById('toggle-reviews').addEventListener('click', e => {
+      const body = document.getElementById('reviews-body');
+      const show = body.style.display === 'block';
+      body.style.display = show ? 'none' : 'block';
+      e.target.textContent = show ? 'See all reviews' : 'Hide reviews';
+    });
   })();
   </script>
 
 </body>
 </html>
-```
