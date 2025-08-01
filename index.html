@@ -2,89 +2,227 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artificial Intelligence Made Easy</title>
 
   <style>
-    /* Global Reset & Body */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-           color: #333; line-height: 1.6; }
-
-    /* Header */
-    header { padding: 60px 20px; background: #f7f7f7; text-align: center; }
-    .title-group span { display: block; font-size: 2.5rem; font-weight: 700; }
-    header h2 { margin-top: 20px; font-size: 1.25rem; color: #555; }
-    .pill-bar {
-      display: inline-block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      background: #e0e0e0;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      color: #333;
+    /* ──────────────────────────────────────────────────────────────────
+       Global Styles (adapted from Speak Theme)
+    ────────────────────────────────────────────────────────────────── */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
     }
 
-    /* Hero Video */
-    .hero { padding: 40px 0; text-align: center; }
+    header {
+      padding: 3em 1em 1em;
+    }
+
+    .title-group {
+      display: inline-block;
+      margin-bottom: 0.4em;
+    }
+
+    .title-group span {
+      display: block;
+      font-size: 2.8em;
+      font-weight: 700;
+      color: #FFDD00;
+      letter-spacing: 1px;
+      margin: 0.2em 0;
+      line-height: 1.1em;
+    }
+
+    h2 {
+      font-size: 1.2em;
+      color: #fff;
+      margin: 0.6em 0 0.4em;
+      white-space: nowrap;
+    }
+
+    .pill-bar {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4em 1em;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #00f8ff, #ff00d0);
+      font-weight: 700;
+      font-size: 0.95em;
+      color: #fff;
+      margin-top: 0.6em;
+    }
+
+    main {
+      max-width: 850px;
+      margin: auto;
+      padding: 2em 1em 3em;
+      position: relative;
+    }
+
+    .electric-frame {
+      position: relative;
+      padding: 10px;
+      border-radius: 12px;
+      margin: 2em auto;
+      background-color: #000;
+      box-shadow:
+        0 0 10px #fdf200,
+        0 0 16px #ffe600,
+        0 0 22px #fff000;
+      animation: flicker 1.5s infinite alternate;
+      max-width: 800px;
+    }
+
+    @keyframes flicker {
+      0% {
+        box-shadow:
+          0 0 8px #ffeb3b,
+          0 0 12px #fdf200,
+          0 0 18px #ffe600;
+      }
+      100% {
+        box-shadow:
+          0 0 12px #fdf200,
+          0 0 18px #fff000,
+          0 0 24px #ffeb3b;
+      }
+    }
+
+    .arrow-up {
+      font-size: 2.2em;
+      color: #FFA500;
+      text-shadow: 0 0 6px #ffcc66;
+      letter-spacing: 0.5em;
+      margin: 0.3em 0 0;
+    }
+
+    .access-message {
+      font-size: 1.35em;
+      font-weight: 700;
+      font-family: 'Segoe UI Semibold', sans-serif;
+      margin-top: 0.3em;
+    }
+
+    .video-message {
+      font-size: 1.15em;
+      color: #ccc;
+      line-height: 1.6em;
+      padding: 0 1em;
+      margin-top: 1.2em;
+    }
+
+    footer {
+      font-size: 0.85em;
+      color: #bbb;
+      padding: 2em 1em;
+      border-top: 1px solid #333;
+    }
+
+    /* ──────────────────────────────────────────────────────────────────
+       Masked Video Styles
+    ────────────────────────────────────────────────────────────────── */
     .video-container {
       position: relative;
-      width: 100%;
-      max-width: 800px;
+      padding-bottom: 56.25%;
       height: 0;
-      padding-bottom: 56.25%; /* 16:9 */
-      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .video-wrapper {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    .placeholder-frame {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://img.youtube.com/vi/YOUR_AI_VIDEO_ID/maxresdefault.jpg');
       background-size: cover;
       background-position: center;
       cursor: pointer;
+      z-index: 100;
     }
-    .video-container .play-button {
+
+    .play-button {
       position: absolute;
       top: 50%; left: 50%;
-      width: 80px; height: 80px;
       transform: translate(-50%, -50%);
-      background: url('https://cdn-icons-png.flaticon.com/512/0/375.png') no-repeat center;
-      background-size: contain;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 0 15px #ffeb3b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 101;
     }
 
-    /* Features Section */
-    .features { display: flex; flex-wrap: wrap; justify-content: center; padding: 60px 20px; }
-    .feature {
-      flex: 1 1 280px;
-      max-width: 320px;
-      margin: 20px;
-      text-align: left;
+    .play-button::after {
+      content: '';
+      display: block;
+      width: 0; height: 0;
+      border-left: 25px solid #000;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
     }
-    .feature h3 { margin-bottom: 10px; font-size: 1.2rem; color: #222; }
-    .feature p { color: #555; }
 
-    /* Call to Action */
-    .cta { padding: 60px 20px; text-align: center; }
-    .sign-up-btn {
-      display: inline-block;
-      padding: 15px 30px;
-      font-size: 1rem;
-      color: #fff;
-      background: #0070f3;
-      border: none;
-      border-radius: 5px;
+    #player {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: none;
+      z-index: 0;
+    }
+
+    .click-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 200;
       cursor: pointer;
-      text-decoration: none;
     }
 
-    /* Footer */
-    footer {
-      padding: 20px;
-      background: #222;
-      color: #eee;
-      text-align: center;
-      font-size: 0.85rem;
+    /* ──────────────────────────────────────────────────────────────────
+       Sign-Up Button Styles
+    ────────────────────────────────────────────────────────────────── */
+    .sign-up-btn {
+      display: none;
+      position: absolute;
+      bottom: 15%;
+      left: 10%;
+      padding: 0.8em 1.2em;
+      border: none;
+      border-radius: 4px;
+      background: #FFDD00;
+      color: #000;
+      font-weight: 700;
+      box-shadow: 0 0 8px rgba(255,221,0,0.7);
+      cursor: pointer;
+      z-index: 900;
+    }
+
+    /* ──────────────────────────────────────────────────────────────────
+       Responsive Adjustments
+    ────────────────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .title-group span { font-size: 2em; }
+      h2 { font-size: 1em; }
+      .video-message { font-size: 1em; }
+      .sign-up-btn { font-size: 0.9em; bottom: 10%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header>
     <div class="title-group">
       <span>Artificial Intelligence.</span>
@@ -92,67 +230,88 @@
     </div>
     <h2>Understand AI → Build Real-World Solutions → Lead the Future</h2>
     <div class="pill-bar">
-      Self-Paced Learning | Live Workshops | Expert Mentoring
+      Self-Paced Learning | Hands-On Projects | Expert Mentoring
     </div>
   </header>
 
-  <!-- HERO VIDEO -->
-  <section class="hero">
-    <div class="video-container" data-video-id="YOUR_VIDEO_ID"></div>
-  </section>
+  <main>
+    <div class="electric-frame">
+      <div class="video-container">
+        <div class="video-wrapper">
+          <div class="placeholder-frame" id="placeholder"></div>
+          <div class="play-button" id="playBtn"></div>
+          <div id="player"></div>
+          <div class="click-overlay"></div>
+        </div>
+      </div>
 
-  <!-- FEATURES -->
-  <section class="features">
-    <div class="feature">
-      <h3>Hands-On Projects</h3>
-      <p>Work through real-world examples—from chatbots to image recognition—to cement your skills.</p>
+      <button class="sign-up-btn"
+        onclick="window.location='https://www.stemsphere.academy/products/courses/ai-made-simple'">
+        Enroll Now
+      </button>
     </div>
-    <div class="feature">
-      <h3>Expert Instructors</h3>
-      <p>Learn from AI practitioners at top tech companies who break down complex topics into bite-size lessons.</p>
-    </div>
-    <div class="feature">
-      <h3>Community Support</h3>
-      <p>Join our active Slack group for peer help, AMAs, and continuous learning opportunities.</p>
-    </div>
-  </section>
 
-  <!-- CALL TO ACTION -->
-  <section class="cta">
-    <a href="https://buy.stripe.com/XXXXXXXXXX" class="sign-up-btn">
-      Enroll Now – $49
-    </a>
-  </section>
+    <div class="arrow-up">↑↑↑↑</div>
+    <div class="access-message">Watch Video for Enrollment details</div>
+    <p class="video-message">
+      From theory to practice: build chatbots, vision systems, and AI tools you can deploy today.
+    </p>
+  </main>
 
-  <!-- FOOTER -->
   <footer>
-    © 2025 STEMSphere • <a href="/privacy.html" style="color:#aaa;">Privacy Policy</a>
+    © 2025 STEMSphere Academy. All rights reserved.
   </footer>
 
-  <!-- YOUTUBE LAZY-LOAD SCRIPT -->
+  <!-- YouTube & Sign-Up Button Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const container = document.querySelector('.video-container');
-      const videoId = container.dataset.videoId;
-      const thumbUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    let player, checkInterval;
+    const milestones = { signUp: 201 }; // 3:21
+    const shown = { signUp: false };
 
-      container.style.backgroundImage = `url('${thumbUrl}')`;
-      const playBtn = document.createElement('div');
-      playBtn.className = 'play-button';
-      container.appendChild(playBtn);
+    // Load YouTube IFrame API
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
 
-      container.addEventListener('click', () => {
-        const iframe = document.createElement('iframe');
-        iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1`);
-        iframe.setAttribute('frameborder', '0');
-        iframe.setAttribute('allowfullscreen', '');
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        container.innerHTML = '';
-        container.appendChild(iframe);
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        host: 'https://www.youtube-nocookie.com',
+        videoId: 'YOUR_AI_VIDEO_ID',
+        playerVars: {
+          controls: 0, disablekb: 1, fs: 0,
+          modestbranding: 1, rel: 0, iv_load_policy: 3,
+          enablejsapi: 1, autoplay: 0
+        },
+        events: {
+          onReady: () => {
+            document.querySelector('.click-overlay')
+              .addEventListener('click', () => {
+                if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
+                  document.getElementById('placeholder').style.display = 'none';
+                  document.getElementById('playBtn').style.display = 'none';
+                  document.getElementById('player').style.display = 'block';
+                  player.playVideo();
+                } else {
+                  player.pauseVideo();
+                }
+              });
+          },
+          onStateChange: e => {
+            if (e.data === YT.PlayerState.PLAYING) {
+              checkInterval = setInterval(() => {
+                const t = player.getCurrentTime();
+                if (t >= milestones.signUp && !shown.signUp) {
+                  shown.signUp = true;
+                  document.querySelector('.sign-up-btn').style.display = 'block';
+                }
+              }, 500);
+            } else {
+              clearInterval(checkInterval);
+            }
+          }
+        }
       });
-    });
+    }
   </script>
-
 </body>
 </html>
