@@ -53,7 +53,7 @@
       font-size: 0.95em;
       color: #fff;
       margin-top: 0.6em;
-      white-space: nowrap; /* keep all on one line */
+      white-space: nowrap; /* keep on one line */
     }
 
     main {
@@ -114,6 +114,44 @@
       padding: 0 1em;
       margin-top: 1.2em;
       text-align: left;
+    }
+
+    /* make first sentence white */
+    .video-message .intro {
+      color: #fff;
+      display: block;
+      margin-bottom: 1em;
+    }
+
+    /* title for bullet list */
+    .video-message-list-title {
+      font-size: 1.15em;
+      color: #ccc;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      text-align: left;
+      padding: 0 1em;
+    }
+
+    /* bullet list styling */
+    .course-covers {
+      list-style: none;
+      padding-left: 1.2em;
+      margin: 0 1em 2em;
+      text-align: left;
+    }
+    .course-covers li {
+      position: relative;
+      padding-left: 1.2em;
+      margin-bottom: 0.5em;
+      color: #ccc;
+    }
+    .course-covers li::before {
+      content: "•";
+      color: #FFDD00;
+      position: absolute;
+      left: 0;
+      top: 0;
     }
 
     footer {
@@ -252,16 +290,22 @@
 
     <div class="arrow-up">↑↑↑↑</div>
     <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
-    <p class="video-message">
-      In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.<br>
-      What the course covers:<br>
-      • 1 Hour beginner friendly course.<br>
-      • What AI really is (and what it isn’t)<br>
-      • How AI is shaping industries and everyday life<br>
-      • Real-world examples and use cases<br>
-      • Ethical questions and responsible AI<br>
-      • Hands-on mini projects to bring your learning to life
-    </p>
+
+    <div class="video-message">
+      <span class="intro">
+        In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.
+      </span>
+      <div class="video-message-list-title">What the course covers:</div>
+      <ul class="course-covers">
+        <li>1 Hour beginner friendly course.</li>
+        <li>What AI really is (and what it isn’t)</li>
+        <li>How AI is shaping industries and everyday life</li>
+        <li>Real-world examples and use cases</li>
+        <li>Ethical questions and responsible AI</li>
+        <li>Hands-on mini projects to bring your learning to life</li>
+        <li>Using AI for productivity as a freelancer and in the workplace</li>
+      </ul>
+    </div>
   </main>
 
   <footer>
