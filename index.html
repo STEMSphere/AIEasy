@@ -256,9 +256,6 @@
       .sign-up-btn { font-size: 0.9em; bottom: 10%; }
     }
   </style>
-
-  <!-- Tabletop.js to fetch your sheet via “anyone-with-link” -->
-  <script src="https://cdn.jsdelivr.net/npm/tabletop@1.5.1/tabletop.js"></script>
 </head>
 <body>
 
@@ -273,7 +270,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <div class="electric-frame">
       <div class="video-container">
         <div class="video-wrapper">
@@ -310,10 +307,8 @@
     </div>
   </main>
 
-  <!-- 🌟 Student Reviews Section -->
-  <section id="reviews" style="max-width:800px; margin:3em auto; text-align:left; padding:0 1em;">
-    <!-- review cards will be injected here -->
-  </section>
+  <!-- Student Reviews will be injected here -->
+  <section id="reviews" style="max-width:800px; margin:3em auto; text-align:left; padding:0 1em;"></section>
 
   <footer>
     © 2025 STEMSphere Academy. All rights reserved.
@@ -322,7 +317,7 @@
   <!-- YouTube & Sign-Up Button Script -->
   <script>
     let player, checkInterval;
-    const milestones = { signUp: 201 };
+    const milestones = { signUp: 201 }; // show button at 3:21
     const shown = { signUp: false };
 
     const tag = document.createElement('script');
@@ -331,7 +326,7 @@
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        host: 'https://www.youtube-nocookie.com',
+        host: 'https://www.youtube.com/embed',
         videoId: 'YOUR_AI_VIDEO_ID',
         playerVars: {
           controls: 0, disablekb: 1, fs: 0,
@@ -369,40 +364,60 @@
     }
   </script>
 
-  <!-- Tabletop.js init to fetch & render your reviews -->
+  <!-- ✅ Review Script Start -->
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      Tabletop.init({
-        key: 'https://docs.google.com/spreadsheets/d/1G_qPmkOORlocqXNpGvvJbfV1BwgRwymKJM0SwAOIAE4/edit?usp=sharing',
-        simpleSheet: true,
-        callback: renderReviews
-      });
+  (async () => {
+    // Determine your course slug (if you later reuse this on other pages)
+    const slug = 'ai-made-simple'; // hard-code for this page
 
-      function renderReviews(data) {
-        const container = document.getElementById('reviews');
-        container.innerHTML = '';           // clear any static content
-        data.forEach(item => {
-          const card = document.createElement('div');
-          card.style.cssText = `
-            border:1px solid #444;
-            background:#111;
-            padding:1em;
-            border-radius:8px;
-            margin-bottom:1em;
-          `;
-          card.innerHTML = `
-            <h3 style="margin:0 0.5em 0.5em; color:#FFDD00;">
-              ${item.Name || 'Anonymous'}
-            </h3>
-            <p style="margin:0 0.5em; color:#ccc;">
-              ${item.Review || ''}
-            </p>
-          `;
-          container.appendChild(card);
-        });
-      }
+    // URL of your published-to-web CSV (from File → Publish to web → CSV)
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
+
+    // Fetch & parse CSV
+    const res = await fetch(csvUrl);
+    const text = await res.text();
+    const rows = text.trim().split('\n')
+      .slice(1)
+      .map(r => r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/^"|"$/g, '')));
+
+    // Filter by slug
+    const reviews = rows.filter(r => r[4] && r[4].toLowerCase() === slug)
+                        .sort((a,b) => new Date(b[3]) - new Date(a[3]));
+    if (!reviews.length) return;
+
+    // Build review cards
+    const container = document.getElementById('reviews');
+    reviews.forEach(r => {
+      const card = document.createElement('div');
+      card.style.cssText = `
+        border:1px solid #444;
+        background:#111;
+        padding:1em;
+        border-radius:8px;
+        margin-bottom:1em;
+      `;
+      card.innerHTML = `
+        <strong style="display:block; color:#FFDD00; margin-bottom:0.5em;">
+          ${r[0] || 'Anonymous'} &nbsp;  
+          <span style="color:#FFD700;">${'★'.repeat(+r[2])}</span>
+          <span style="color:#555;">(${new Date(r[3]).toLocaleDateString()})</span>
+        </strong>
+        <p style="margin:0; color:#ccc; line-height:1.4;">
+          ${r[1]}
+        </p>
+        ${r[5] ? `
+        <div style="margin-top:0.8em; padding-left:1em; border-left:2px solid #555;">
+          <em style="color:#89c4ff;">Instructor Reply:</em>
+          <p style="margin:0.3em 0 0 0; color:#7fbfff; font-style:italic;">
+            ${r[5]}
+          </p>
+        </div>` : ''}
+      `;
+      container.appendChild(card);
     });
+  })();
   </script>
+  <!-- ✅ Review Script End -->
 
 </body>
 </html>
