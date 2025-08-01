@@ -7,7 +7,7 @@
 
   <style>
     /* ──────────────────────────────────────────────────────────────────
-       Global Styles
+       Global Styles (adapted from Speak Theme)
     ────────────────────────────────────────────────────────────────── */
     body {
       margin: 0;
@@ -16,8 +16,16 @@
       color: #fff;
       text-align: center;
     }
-    header { padding: 3em 1em 1em; }
-    .title-group { display: inline-block; margin-bottom: 0.4em; }
+
+    header {
+      padding: 3em 1em 1em;
+    }
+
+    .title-group {
+      display: inline-block;
+      margin-bottom: 0.4em;
+    }
+
     .title-group span {
       display: block;
       font-size: 2.8em;
@@ -27,12 +35,14 @@
       margin: 0.2em 0;
       line-height: 1.1em;
     }
+
     h2 {
       font-size: 1.2em;
       color: #fff;
       margin: 0.6em 0 0.4em;
       white-space: nowrap;
     }
+
     .pill-bar {
       display: inline-flex;
       align-items: center;
@@ -45,12 +55,14 @@
       margin-top: 0.6em;
       white-space: nowrap;
     }
+
     main {
       max-width: 850px;
       margin: auto;
       padding: 2em 1em 3em;
       position: relative;
     }
+
     .electric-frame {
       position: relative;
       padding: 10px;
@@ -64,6 +76,7 @@
       animation: flicker 1.5s infinite alternate;
       max-width: 800px;
     }
+
     @keyframes flicker {
       0% {
         box-shadow:
@@ -78,6 +91,7 @@
           0 0 24px #ffeb3b;
       }
     }
+
     .arrow-up {
       font-size: 2.2em;
       color: #FFA500;
@@ -85,12 +99,14 @@
       letter-spacing: 0.5em;
       margin: 0.3em 0 0;
     }
+
     .access-message {
       font-size: 1.35em;
       font-weight: 700;
       font-family: 'Segoe UI Semibold', sans-serif;
       margin-top: 0.3em;
     }
+
     .video-message {
       font-size: 1.15em;
       color: #ccc;
@@ -99,11 +115,13 @@
       margin-top: 1.2em;
       text-align: left;
     }
+
     .video-message .intro {
       color: #fff;
       display: block;
       margin-bottom: 1em;
     }
+
     .video-message-list-title {
       font-size: 1.15em;
       color: #ccc;
@@ -112,18 +130,21 @@
       text-align: left;
       padding: 0 1em;
     }
+
     .course-covers {
       list-style: none;
       padding-left: 1.2em;
       margin: 0 1em 2em;
       text-align: left;
     }
+
     .course-covers li {
       position: relative;
       padding-left: 1.2em;
       margin-bottom: 0.5em;
       color: #ccc;
     }
+
     .course-covers li::before {
       content: "•";
       color: #FFDD00;
@@ -131,6 +152,7 @@
       left: 0;
       top: 0;
     }
+
     footer {
       font-size: 0.85em;
       color: #bbb;
@@ -148,6 +170,7 @@
       overflow: hidden;
       border-radius: 8px;
     }
+
     .video-wrapper {
       position: absolute;
       top: 0; left: 0;
@@ -156,20 +179,24 @@
       border-radius: 8px;
       background: #000;
     }
+
+    /* ← Overridden: remove old background and let the IMG show through */
     .placeholder-frame {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      overflow: hidden;
+      background: none !important;
       cursor: pointer;
       z-index: 100;
     }
+
     .placeholder-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
+
     .play-button {
       position: absolute;
       top: 50%; left: 50%;
@@ -183,6 +210,7 @@
       justify-content: center;
       z-index: 101;
     }
+
     .play-button::after {
       content: '';
       display: block;
@@ -191,6 +219,7 @@
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
     }
+
     #player {
       position: absolute;
       top: 0; left: 0;
@@ -198,6 +227,7 @@
       display: none;
       z-index: 0;
     }
+
     .click-overlay {
       position: absolute;
       top: 0; left: 0;
@@ -224,6 +254,7 @@
       cursor: pointer;
       z-index: 900;
     }
+
     @media (max-width: 600px) {
       .title-group span { font-size: 2em; }
       h2 { font-size: 1em; }
@@ -249,13 +280,16 @@
     <div class="electric-frame">
       <div class="video-container">
         <div class="video-wrapper">
-          <!-- Your Google Drive–hosted cover image -->
+
+          <!-- ↓ Your custom cover ↓ -->
           <div class="placeholder-frame" id="placeholder">
+            <!-- direct‐link hosted on Google Drive -->
             <img
               src="https://drive.google.com/uc?export=view&id=1B-YCg4U3rLy4rPCynrNbJqfGMCQAI0l6"
               alt="AI Made Simple course thumbnail"
             />
           </div>
+
           <div class="play-button" id="playBtn"></div>
           <div id="player"></div>
           <div class="click-overlay"></div>
@@ -268,6 +302,7 @@
       </button>
     </div>
 
+    <!-- Reviews dropdown -->
     <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
 
     <div class="arrow-up">↑↑↑↑</div>
@@ -315,16 +350,17 @@
         },
         events: {
           onReady: () => {
-            document.querySelector('.click-overlay').addEventListener('click', () => {
-              if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-                document.getElementById('placeholder').style.display = 'none';
-                document.getElementById('playBtn').style.display = 'none';
-                document.getElementById('player').style.display = 'block';
-                player.playVideo();
-              } else {
-                player.pauseVideo();
-              }
-            });
+            document.querySelector('.click-overlay')
+              .addEventListener('click', () => {
+                if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
+                  document.getElementById('placeholder').style.display = 'none';
+                  document.getElementById('playBtn').style.display = 'none';
+                  document.getElementById('player').style.display = 'block';
+                  player.playVideo();
+                } else {
+                  player.pauseVideo();
+                }
+              });
           },
           onStateChange: e => {
             if (e.data === YT.PlayerState.PLAYING) {
@@ -361,7 +397,7 @@
       .sort((a, b) => new Date(b[3]) - new Date(a[3]));
     if (!reviews.length) return;
 
-    const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2])||0), 0) / reviews.length).toFixed(1);
+    const avg = (reviews.reduce((sum, r) => sum + parseFloat(r[2]||0), 0) / reviews.length).toFixed(1);
     const count = reviews.length;
 
     const wrapper = document.createElement('div');
