@@ -31,7 +31,6 @@
       font-size: 1.2em;
       color: #fff;
       margin: 0.6em 0 0.4em;
-      /* wraps on mobile without horizontal scroll */
       white-space: normal;
     }
     .pill-bar {
@@ -132,6 +131,33 @@
       left: 0;
       top: 0;
     }
+
+    /* PAYMENT BUTTONS (vertical list) */
+    .payment-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8em;
+      margin: 2em 0;
+    }
+    .payment-buttons a {
+      text-decoration: none;
+      color: #fff;
+      padding: 0.8em 1.2em;
+      border-radius: 999px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      width: auto;
+    }
+    .btn-usa     { background: #3B82F6; }
+    .btn-india   { background: #D97706; }
+    .btn-nigeria { background: #059669; }
+    .btn-sg      { background: #F59E0B; }
+    .btn-th      { background: #EF4444; }
+    .btn-pk      { background: #6366F1; }
+
     footer {
       font-size: 0.85em;
       color: #bbb;
@@ -140,7 +166,7 @@
     }
 
     /* ──────────────────────────────────────────────────────────────────
-       Masked Video Styles
+       Masked Video & Sign-Up Button Styles below (unchanged)
     ────────────────────────────────────────────────────────────────── */
     .video-container {
       position: relative;
@@ -206,10 +232,6 @@
       z-index: 200;
       cursor: pointer;
     }
-
-    /* ──────────────────────────────────────────────────────────────────
-       Sign-Up Button Styles
-    ────────────────────────────────────────────────────────────────── */
     .sign-up-btn {
       display: none;
       position: absolute;
@@ -240,7 +262,6 @@
       <span>Artificial Intelligence.</span>
       <span>Made Easy.</span>
     </div>
-    <!-- Edited tagline -->
     <h2>Understand AI → Use For Productivity → Build Solutions</h2>
     <div class="pill-bar">
       1 hour | Beginner Friendly | Hands-On Projects
@@ -273,22 +294,36 @@
 
     <div class="arrow-up">↑↑↑↑</div>
 
-    <!-- Edited section title -->
-    <div class="access-message">What the Course Covers</div>
-
+    <!-- UPDATED SECTION START -->
+    <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
     <div class="video-message">
-      <!-- intro removed -->
-      <!-- list-title removed -->
-      <ul class="course-covers">
-        <li>1 Hour beginner friendly course.</li>
-        <li>What AI really is (and what it isn’t)</li>
-        <li>How AI is shaping industries and everyday life</li>
-        <li>Real-world examples and use cases</li>
-        <li>Ethical questions and responsible AI</li>
-        <li>Hands-on mini projects to bring your learning to life</li>
-        <li>Using AI for productivity as a freelancer and in the workplace</li>
-      </ul>
+      <span class="intro">
+        In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.
+      </span>
+
+      <div class="payment-buttons">
+        <a href="https://buy.stripe.com/fZueVc0F30DG5dRdk333W37" class="btn-usa">
+          🇺🇸 Pay $20 USD
+        </a>
+        <a href="https://buy.stripe.com/6oUbJ0fzX3PSeOrgwf33W38" class="btn-india">
+          🇮🇳 Pay ₹650 Rupees
+        </a>
+        <a href="https://buy.stripe.com/6oUfZg0F3868cGjbbV33W39" class="btn-nigeria">
+          🇳🇬 Pay ₦11,000 Naira
+        </a>
+        <a href="https://buy.stripe.com/00wfZgbjH5Y0gWzcfZ33W3a" class="btn-sg">
+          🇸🇬 Pay S$25 SGD
+        </a>
+        <a href="https://buy.stripe.com/3cIeVcevT0DG35Jfsb33W3b" class="btn-th">
+          🇹🇭 Pay ฿250 Thai Baht
+        </a>
+        <a href="https://buy.stripe.com/3cIfZgcnLcmo7lZeo733W3c" class="btn-pk">
+          🇵🇰 Pay PKR2,000
+        </a>
+      </div>
     </div>
+    <!-- UPDATED SECTION END -->
+
   </main>
 
   <footer>
@@ -348,21 +383,21 @@
   <script>
     (async () => {
       const slug = 'ai-made-simple';
-      const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv'; 
+      const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
       const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
 
       const res = await fetch(csvUrl);
       const text = await res.text();
-      const rows = text.trim().split('\n').slice(1)
-        .map(r => r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/)
-        .map(c => c.replace(/^"|"$/g, '')));
+      const rows = text.trim().split('\n').slice(1).map(r =>
+        r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/^"|"$/g, ''))
+      );
 
       const reviews = rows
         .filter(r => r[4] && r[4].toLowerCase() === slug)
         .sort((a, b) => new Date(b[3]) - new Date(a[3]));
       if (!reviews.length) return;
 
-      const avg = (reviews.reduce((sum, r) => sum + parseFloat(r[2]||0), 0) / reviews.length).toFixed(1);
+      const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2])||0), 0) / reviews.length).toFixed(1);
       const count = reviews.length;
 
       const wrapper = document.createElement('div');
@@ -442,4 +477,4 @@
 
 </body>
 </html>
-
+```
