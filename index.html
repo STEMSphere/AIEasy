@@ -312,8 +312,7 @@
 
   <!-- 🌟 Student Reviews Section -->
   <section id="reviews" style="max-width:800px; margin:3em auto; text-align:left; padding:0 1em;">
-    <h2 style="color:#FFDD00; font-size:2em; margin-bottom:0.5em;">🌟 Student Reviews</h2>
-    <!-- Cards will be injected here -->
+    <!-- review cards will be injected here -->
   </section>
 
   <footer>
@@ -323,7 +322,7 @@
   <!-- YouTube & Sign-Up Button Script -->
   <script>
     let player, checkInterval;
-    const milestones = { signUp: 201 }; // show button at 3:21
+    const milestones = { signUp: 201 };
     const shown = { signUp: false };
 
     const tag = document.createElement('script');
@@ -341,17 +340,16 @@
         },
         events: {
           onReady: () => {
-            document.querySelector('.click-overlay')
-              .addEventListener('click', () => {
-                if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
-                  document.getElementById('placeholder').style.display = 'none';
-                  document.getElementById('playBtn').style.display = 'none';
-                  document.getElementById('player').style.display = 'block';
-                  player.playVideo();
-                } else {
-                  player.pauseVideo();
-                }
-              });
+            document.querySelector('.click-overlay').addEventListener('click', () => {
+              if (player.getPlayerState() !== YT.PlayerState.PLAYING) {
+                document.getElementById('placeholder').style.display = 'none';
+                document.getElementById('playBtn').style.display = 'none';
+                document.getElementById('player').style.display = 'block';
+                player.playVideo();
+              } else {
+                player.pauseVideo();
+              }
+            });
           },
           onStateChange: e => {
             if (e.data === YT.PlayerState.PLAYING) {
@@ -382,6 +380,7 @@
 
       function renderReviews(data) {
         const container = document.getElementById('reviews');
+        container.innerHTML = '';           // clear any static content
         data.forEach(item => {
           const card = document.createElement('div');
           card.style.cssText = `
@@ -396,7 +395,7 @@
               ${item.Name || 'Anonymous'}
             </h3>
             <p style="margin:0 0.5em; color:#ccc;">
-              ${item.Review || 'No review provided.'}
+              ${item.Review || ''}
             </p>
           `;
           container.appendChild(card);
