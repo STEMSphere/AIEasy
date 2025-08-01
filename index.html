@@ -132,12 +132,11 @@
       top: 0;
     }
 
-    /* PAYMENT BUTTONS (vertical list) */
+    /* PAYMENT BUTTONS (original vertical list) */
     .payment-buttons {
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      width: 100%;
+      align-items: center;
       gap: 0.8em;
       margin: 2em 0;
     }
@@ -147,11 +146,10 @@
       padding: 0.8em 1.2em;
       border-radius: 999px;
       font-weight: 700;
-      display: flex;
-      justify-content: center;
+      display: inline-flex;
       align-items: center;
       gap: 0.5em;
-      width: 100%;
+      width: auto;
     }
     .btn-usa     { background: #3B82F6; }
     .btn-india   { background: #D97706; }
@@ -264,6 +262,7 @@
       <span>Artificial Intelligence.</span>
       <span>Made Easy.</span>
     </div>
+    <!-- 1) Updated tagline -->
     <h2>Understand AI → Be Productivie → Build Solutions</h2>
     <div class="pill-bar">
       1 hour | Beginner Friendly | Hands-On Projects
@@ -299,30 +298,41 @@
     <!-- UPDATED SECTION START -->
     <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
     <div class="video-message">
-      <span class="intro">
-        In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.
-      </span>
+      <!-- 2) Removed intro paragraph -->
+      <!-- 3) Features list inserted -->
+      <ul class="feature-list">
+        <li>1 Hour beginner friendly course.</li>
+        <li>What AI really is (and what it isn’t)</li>
+        <li>How AI is shaping industries and everyday life</li>
+        <li>Real-world examples and use cases</li>
+        <li>Ethical questions and responsible AI</li>
+        <li>Hands-on mini projects to bring your learning to life</li>
+        <li>Using AI for productivity as a freelancer and in the workplace</li>
+      </ul>
 
-      <div class="payment-intro">🌐 Pay in your local currency.</div>
-      <div class="payment-buttons">
-        <a href="https://buy.stripe.com/fZueVc0F30DG5dRdk333W37" class="btn-usa">
-          🇺🇸 Pay $20 USD
-        </a>
-        <a href="https://buy.stripe.com/6oUbJ0fzX3PSeOrgwf33W38" class="btn-india">
-          🇮🇳 Pay ₹650 Rupees
-        </a>
-        <a href="https://buy.stripe.com/6oUfZg0F3868cGjbbV33W39" class="btn-nigeria">
-          🇳🇬 Pay ₦11,000 Naira
-        </a>
-        <a href="https://buy.stripe.com/3cIfZgcnLcmo7lZeo733W3c" class="btn-pk">
-          🇵🇰 Pay PKR2,000
-        </a>
-        <a href="https://buy.stripe.com/00wfZgbjH5Y0gWzcfZ33W3a" class="btn-sg">
-          🇸🇬 Pay S$25 SGD
-        </a>
-        <a href="https://buy.stripe.com/3cIeVcevT0DG35Jfsb33W3b" class="btn-th">
-          🇹🇭 Pay ฿250 Thai Baht
-        </a>
+      <!-- 4) White card around pay buttons -->
+      <div class="payment-card">
+        <div class="payment-intro">🌐 Pay in your local currency.</div>
+        <div class="payment-buttons">
+          <a href="https://buy.stripe.com/fZueVc0F30DG5dRdk333W37" class="btn-usa">
+            🇺🇸 Pay $20 USD
+          </a>
+          <a href="https://buy.stripe.com/6oUbJ0fzX3PSeOrgwf33W38" class="btn-india">
+            🇮🇳 Pay ₹650 Rupees
+          </a>
+          <a href="https://buy.stripe.com/6oUfZg0F3868cGjbbV33W39" class="btn-nigeria">
+            🇳🇬 Pay ₦11,000 Naira
+          </a>
+          <a href="https://buy.stripe.com/3cIfZgcnLcmo7lZeo733W3c" class="btn-pk">
+            🇵🇰 Pay PKR2,000
+          </a>
+          <a href="https://buy.stripe.com/00wfZgbjH5Y0gWzcfZ33W3a" class="btn-sg">
+            🇸🇬 Pay S$25 SGD
+          </a>
+          <a href="https://buy.stripe.com/3cIeVcevT0DG35Jfsb33W3b" class="btn-th">
+            🇹🇭 Pay ฿250 Thai Baht
+          </a>
+        </div>
       </div>
     </div>
     <!-- UPDATED SECTION END -->
@@ -477,7 +487,5 @@
       });
     })();
   </script>
-
 </body>
 </html>
-```
