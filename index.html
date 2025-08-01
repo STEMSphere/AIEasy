@@ -160,11 +160,15 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-image: url('https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg');
-      background-size: cover;
-      background-position: center;
       cursor: pointer;
+      overflow: hidden;
       z-index: 100;
+    }
+    .placeholder-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .play-button {
       position: absolute;
@@ -245,7 +249,13 @@
     <div class="electric-frame">
       <div class="video-container">
         <div class="video-wrapper">
-          <div class="placeholder-frame" id="placeholder"></div>
+          <!-- use your actual YouTube thumbnail here -->
+          <div class="placeholder-frame" id="placeholder">
+            <img
+              src="https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg"
+              alt="AI Made Simple course thumbnail"
+            />
+          </div>
           <div class="play-button" id="playBtn"></div>
           <div id="player"></div>
           <div class="click-overlay"></div>
@@ -421,7 +431,6 @@
     `;
 
     document.getElementById('reviews-container').appendChild(wrapper);
-
     document.getElementById('submit-review')
       .addEventListener('click', () => window.open(formUrl, '_blank'));
     document.getElementById('toggle-reviews')
