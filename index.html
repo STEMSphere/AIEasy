@@ -160,7 +160,7 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background-image: url('https://img.youtube.com/vi/YOUR_AI_VIDEO_ID/maxresdefault.jpg');
+      background-image: url('https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg');
       background-size: cover;
       background-position: center;
       cursor: pointer;
@@ -298,7 +298,7 @@
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
         host: 'https://www.youtube.com',
-        videoId: 'YOUR_AI_VIDEO_ID',
+        videoId: '3gGz-jLkYoI',
         playerVars: {
           controls: 0, disablekb: 1, fs: 0,
           modestbranding: 1, rel: 0, iv_load_policy: 3,
@@ -338,28 +338,24 @@
   <!-- ✅ Reviews Dropdown Script -->
   <script>
   (async () => {
-    const slug = 'ai-made-simple';  // this page’s course slug
+    const slug = 'ai-made-simple';
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
     const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
 
-    // fetch & parse CSV
     const res = await fetch(csvUrl);
     const text = await res.text();
     const rows = text.trim().split('\n').slice(1).map(r =>
       r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/^"|"$/g, ''))
     );
 
-    // filter & sort
     const reviews = rows
       .filter(r => r[4] && r[4].toLowerCase() === slug)
       .sort((a, b) => new Date(b[3]) - new Date(a[3]));
     if (!reviews.length) return;
 
-    // average & count
     const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2])||0), 0) / reviews.length).toFixed(1);
     const count = reviews.length;
 
-    // build summary + dropdown
     const wrapper = document.createElement('div');
     wrapper.className = 'reviews-summary';
     wrapper.style.cssText = `
@@ -424,10 +420,8 @@
       </div>
     `;
 
-    // inject under the video
     document.getElementById('reviews-container').appendChild(wrapper);
 
-    // handlers
     document.getElementById('submit-review')
       .addEventListener('click', () => window.open(formUrl, '_blank'));
     document.getElementById('toggle-reviews')
@@ -442,3 +436,4 @@
 
 </body>
 </html>
+```
