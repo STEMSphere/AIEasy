@@ -7,7 +7,7 @@
 
   <style>
     /* ──────────────────────────────────────────────────────────────────
-       Global Styles (adapted from Speak Theme)
+       Global Styles
     ────────────────────────────────────────────────────────────────── */
     body {
       margin: 0;
@@ -16,16 +16,8 @@
       color: #fff;
       text-align: center;
     }
-
-    header {
-      padding: 3em 1em 1em;
-    }
-
-    .title-group {
-      display: inline-block;
-      margin-bottom: 0.4em;
-    }
-
+    header { padding: 3em 1em 1em; }
+    .title-group { display: inline-block; margin-bottom: 0.4em; }
     .title-group span {
       display: block;
       font-size: 2.8em;
@@ -35,14 +27,12 @@
       margin: 0.2em 0;
       line-height: 1.1em;
     }
-
     h2 {
       font-size: 1.2em;
       color: #fff;
       margin: 0.6em 0 0.4em;
       white-space: nowrap;
     }
-
     .pill-bar {
       display: inline-flex;
       align-items: center;
@@ -55,14 +45,12 @@
       margin-top: 0.6em;
       white-space: nowrap;
     }
-
     main {
       max-width: 850px;
       margin: auto;
       padding: 2em 1em 3em;
       position: relative;
     }
-
     .electric-frame {
       position: relative;
       padding: 10px;
@@ -76,7 +64,6 @@
       animation: flicker 1.5s infinite alternate;
       max-width: 800px;
     }
-
     @keyframes flicker {
       0% {
         box-shadow:
@@ -91,7 +78,6 @@
           0 0 24px #ffeb3b;
       }
     }
-
     .arrow-up {
       font-size: 2.2em;
       color: #FFA500;
@@ -99,14 +85,12 @@
       letter-spacing: 0.5em;
       margin: 0.3em 0 0;
     }
-
     .access-message {
       font-size: 1.35em;
       font-weight: 700;
       font-family: 'Segoe UI Semibold', sans-serif;
       margin-top: 0.3em;
     }
-
     .video-message {
       font-size: 1.15em;
       color: #ccc;
@@ -115,13 +99,11 @@
       margin-top: 1.2em;
       text-align: left;
     }
-
     .video-message .intro {
       color: #fff;
       display: block;
       margin-bottom: 1em;
     }
-
     .video-message-list-title {
       font-size: 1.15em;
       color: #ccc;
@@ -130,21 +112,18 @@
       text-align: left;
       padding: 0 1em;
     }
-
     .course-covers {
       list-style: none;
       padding-left: 1.2em;
       margin: 0 1em 2em;
       text-align: left;
     }
-
     .course-covers li {
       position: relative;
       padding-left: 1.2em;
       margin-bottom: 0.5em;
       color: #ccc;
     }
-
     .course-covers li::before {
       content: "•";
       color: #FFDD00;
@@ -152,7 +131,6 @@
       left: 0;
       top: 0;
     }
-
     footer {
       font-size: 0.85em;
       color: #bbb;
@@ -170,7 +148,6 @@
       overflow: hidden;
       border-radius: 8px;
     }
-
     .video-wrapper {
       position: absolute;
       top: 0; left: 0;
@@ -179,7 +156,6 @@
       border-radius: 8px;
       background: #000;
     }
-
     .placeholder-frame {
       position: absolute;
       top: 0; left: 0;
@@ -190,7 +166,6 @@
       cursor: pointer;
       z-index: 100;
     }
-
     .play-button {
       position: absolute;
       top: 50%; left: 50%;
@@ -204,7 +179,6 @@
       justify-content: center;
       z-index: 101;
     }
-
     .play-button::after {
       content: '';
       display: block;
@@ -213,7 +187,6 @@
       border-top: 15px solid transparent;
       border-bottom: 15px solid transparent;
     }
-
     #player {
       position: absolute;
       top: 0; left: 0;
@@ -221,7 +194,6 @@
       display: none;
       z-index: 0;
     }
-
     .click-overlay {
       position: absolute;
       top: 0; left: 0;
@@ -248,7 +220,6 @@
       cursor: pointer;
       z-index: 900;
     }
-
     @media (max-width: 600px) {
       .title-group span { font-size: 2em; }
       h2 { font-size: 1em; }
@@ -287,6 +258,9 @@
       </button>
     </div>
 
+    <!-- ↓↓↓ Reviews dropdown injected here ↓↓↓ -->
+    <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
+
     <div class="arrow-up">↑↑↑↑</div>
     <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
 
@@ -307,9 +281,6 @@
     </div>
   </main>
 
-  <!-- Student Reviews will be injected here -->
-  <section id="reviews" style="max-width:800px; margin:3em auto; text-align:left; padding:0 1em;"></section>
-
   <footer>
     © 2025 STEMSphere Academy. All rights reserved.
   </footer>
@@ -317,7 +288,7 @@
   <!-- YouTube & Sign-Up Button Script -->
   <script>
     let player, checkInterval;
-    const milestones = { signUp: 201 }; // show button at 3:21
+    const milestones = { signUp: 201 };
     const shown = { signUp: false };
 
     const tag = document.createElement('script');
@@ -326,7 +297,7 @@
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        host: 'https://www.youtube.com/embed',
+        host: 'https://www.youtube.com',
         videoId: 'YOUR_AI_VIDEO_ID',
         playerVars: {
           controls: 0, disablekb: 1, fs: 0,
@@ -364,60 +335,110 @@
     }
   </script>
 
-  <!-- ✅ Review Script Start -->
+  <!-- ✅ Reviews Dropdown Script -->
   <script>
   (async () => {
-    // Determine your course slug (if you later reuse this on other pages)
-    const slug = 'ai-made-simple'; // hard-code for this page
-
-    // URL of your published-to-web CSV (from File → Publish to web → CSV)
+    const slug = 'ai-made-simple';  // this page’s course slug
     const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
 
-    // Fetch & parse CSV
+    // fetch & parse CSV
     const res = await fetch(csvUrl);
     const text = await res.text();
-    const rows = text.trim().split('\n')
-      .slice(1)
-      .map(r => r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/^"|"$/g, '')));
+    const rows = text.trim().split('\n').slice(1).map(r =>
+      r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/^"|"$/g, ''))
+    );
 
-    // Filter by slug
-    const reviews = rows.filter(r => r[4] && r[4].toLowerCase() === slug)
-                        .sort((a,b) => new Date(b[3]) - new Date(a[3]));
+    // filter & sort
+    const reviews = rows
+      .filter(r => r[4] && r[4].toLowerCase() === slug)
+      .sort((a, b) => new Date(b[3]) - new Date(a[3]));
     if (!reviews.length) return;
 
-    // Build review cards
-    const container = document.getElementById('reviews');
-    reviews.forEach(r => {
-      const card = document.createElement('div');
-      card.style.cssText = `
-        border:1px solid #444;
-        background:#111;
-        padding:1em;
-        border-radius:8px;
-        margin-bottom:1em;
-      `;
-      card.innerHTML = `
-        <strong style="display:block; color:#FFDD00; margin-bottom:0.5em;">
-          ${r[0] || 'Anonymous'} &nbsp;  
-          <span style="color:#FFD700;">${'★'.repeat(+r[2])}</span>
-          <span style="color:#555;">(${new Date(r[3]).toLocaleDateString()})</span>
-        </strong>
-        <p style="margin:0; color:#ccc; line-height:1.4;">
-          ${r[1]}
-        </p>
-        ${r[5] ? `
-        <div style="margin-top:0.8em; padding-left:1em; border-left:2px solid #555;">
-          <em style="color:#89c4ff;">Instructor Reply:</em>
-          <p style="margin:0.3em 0 0 0; color:#7fbfff; font-style:italic;">
-            ${r[5]}
-          </p>
-        </div>` : ''}
-      `;
-      container.appendChild(card);
-    });
+    // average & count
+    const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2])||0), 0) / reviews.length).toFixed(1);
+    const count = reviews.length;
+
+    // build summary + dropdown
+    const wrapper = document.createElement('div');
+    wrapper.className = 'reviews-summary';
+    wrapper.style.cssText = `
+      margin:2em 0; padding-top:1em; border-top:1px solid #444;
+      color:#ccc; font-family:inherit;
+    `;
+    wrapper.innerHTML = `
+      <div style="margin-bottom:0.5em;">
+        <span style="
+          background:#2e7d32; color:#fff;
+          padding:0.3em 0.8em; border-radius:20px;
+          font-size:0.9em; font-weight:bold;
+        ">
+          ⭐ Purchased by students worldwide
+        </span>
+      </div>
+      <h3 style="
+        font-weight:600; margin:0.8em 0 0.6em; color:#fff;
+      ">
+        <span style="color:#FFD700; font-size:1.2em;">★</span>
+        ${avg} (${count} review${count>1?'s':''})
+      </h3>
+      <div style="display:flex; gap:0.8em; flex-wrap:wrap; margin:1em 0;">
+        <button id="toggle-reviews" style="
+          padding:0.5em 1em; font-size:0.95em;
+          background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
+          color:#f1f1f1; border:1px solid #555;
+          border-radius:6px; cursor:pointer;
+        ">See all reviews</button>
+        <button id="submit-review" style="
+          padding:0.5em 1em; font-size:0.95em;
+          background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
+          color:#f1f1f1; border:1px solid #555;
+          border-radius:6px; cursor:pointer;
+        ">Submit a review</button>
+      </div>
+      <div id="reviews-body" style="margin-top:1.2em; display:none;">
+        ${reviews.map(r => `
+          <div style="margin-bottom:1.5em;">
+            <strong style="color:#eee;">${r[0]||'Anonymous'}</strong>
+            ${'★'.repeat(+r[2]).padEnd(5,'☆')
+              .replace(/★/g, '<span style="color:#FFD700;">★</span>')
+              .replace(/☆/g, '<span style="color:#ccc;">★</span>')}<br>
+            <small style="color:#aaa;">
+              ${new Date(r[3]).toLocaleDateString()}
+            </small>
+            <p style="margin:0.4em 0 0; color:#ccc; line-height:1.4;">
+              ${r[1]}
+            </p>
+            ${r[5] ? `
+              <div style="margin-left:1em; margin-top:0.3em;">
+                <div style="
+                  font-size:0.85em; color:#89c4ff; margin-bottom:0.2em;
+                  font-weight:600;
+                ">Instructor Reply:</div>
+                <div style="
+                  font-size:0.85em; color:#7fbfff; font-style:italic;
+                ">${r[5]}</div>
+              </div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
+
+    // inject under the video
+    document.getElementById('reviews-container').appendChild(wrapper);
+
+    // handlers
+    document.getElementById('submit-review')
+      .addEventListener('click', () => window.open(formUrl, '_blank'));
+    document.getElementById('toggle-reviews')
+      .addEventListener('click', e => {
+        const body = document.getElementById('reviews-body');
+        const showing = body.style.display === 'block';
+        body.style.display = showing ? 'none' : 'block';
+        e.target.textContent = showing ? 'See all reviews' : 'Hide reviews';
+      });
   })();
   </script>
-  <!-- ✅ Review Script End -->
 
 </body>
 </html>
