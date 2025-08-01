@@ -53,7 +53,7 @@
       font-size: 0.95em;
       color: #fff;
       margin-top: 0.6em;
-      white-space: nowrap; /* prevent wrapping on mobile */
+      white-space: nowrap; /* keep all on one line */
     }
 
     main {
@@ -212,9 +212,6 @@
       z-index: 900;
     }
 
-    /* ──────────────────────────────────────────────────────────────────
-       Responsive Adjustments
-    ────────────────────────────────────────────────────────────────── */
     @media (max-width: 600px) {
       .title-group span { font-size: 2em; }
       h2 { font-size: 1em; }
@@ -254,15 +251,16 @@
     </div>
 
     <div class="arrow-up">↑↑↑↑</div>
-    <div class="access-message">Watch Video for Enrollment details</div>
+    <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
     <p class="video-message">
+      In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.<br>
       What the course covers:<br>
+      • 1 Hour beginner friendly course.<br>
       • What AI really is (and what it isn’t)<br>
       • How AI is shaping industries and everyday life<br>
       • Real-world examples and use cases<br>
       • Ethical questions and responsible AI<br>
-      • Hands-on mini projects to bring your learning to life<br>
-      • 1 Hour beginner friendly course.
+      • Hands-on mini projects to bring your learning to life
     </p>
   </main>
 
@@ -276,7 +274,6 @@
     const milestones = { signUp: 201 }; // 3:21
     const shown = { signUp: false };
 
-    // Load YouTube IFrame API
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     document.head.appendChild(tag);
