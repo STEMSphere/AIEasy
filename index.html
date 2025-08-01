@@ -31,7 +31,8 @@
       font-size: 1.2em;
       color: #fff;
       margin: 0.6em 0 0.4em;
-      white-space: nowrap;
+      /* wraps on mobile without horizontal scroll */
+      white-space: normal;
     }
     .pill-bar {
       display: inline-flex;
@@ -156,8 +157,6 @@
       border-radius: 8px;
       background: #000;
     }
-
-    /* ← replace the old static cover rules with these: */
     .placeholder-frame {
       position: absolute;
       top: 0; left: 0;
@@ -172,7 +171,6 @@
       object-fit: cover;
       display: block;
     }
-
     .play-button {
       position: absolute;
       top: 50%; left: 50%;
@@ -242,7 +240,8 @@
       <span>Artificial Intelligence.</span>
       <span>Made Easy.</span>
     </div>
-    <h2>Understand AI → Using AI For Productivity → Build Real-World Solutions</h2>
+    <!-- Edited tagline -->
+    <h2>Understand AI → Use For Productivity → Build Solutions</h2>
     <div class="pill-bar">
       1 hour | Beginner Friendly | Hands-On Projects
     </div>
@@ -252,23 +251,12 @@
     <div class="electric-frame">
       <div class="video-container">
         <div class="video-wrapper">
-          <!-- ← YOUR CUSTOM COVER HERE ↓ -->
           <div class="placeholder-frame" id="placeholder">
-            <!--
-              For YouTube’s own thumbnail:
-              -->
             <img
               src="https://img.youtube.com/vi/3gGz-jLkYoI/maxresdefault.jpg"
               alt="AI Made Simple course thumbnail"
             />
-
-            <!--
-              Or, if you’d rather host on Google Drive,
-              first share publicly and swap in a direct link:
-              https://drive.google.com/uc?export=view&id=YOUR_FILE_ID
-            -->
           </div>
-
           <div class="play-button" id="playBtn"></div>
           <div id="player"></div>
           <div class="click-overlay"></div>
@@ -284,12 +272,13 @@
     <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
 
     <div class="arrow-up">↑↑↑↑</div>
-    <div class="access-message">✨ AI Made Simple: A Beginner’s Guide for Everyone</div>
+
+    <!-- Edited section title -->
+    <div class="access-message">What the Course Covers</div>
+
     <div class="video-message">
-      <span class="intro">
-        In this short but powerful 1-hour course, we’ll demystify AI in a way that’s clear, engaging, and easy to understand.
-      </span>
-      <div class="video-message-list-title">What the course covers:</div>
+      <!-- intro removed -->
+      <!-- list-title removed -->
       <ul class="course-covers">
         <li>1 Hour beginner friendly course.</li>
         <li>What AI really is (and what it isn’t)</li>
@@ -357,98 +346,98 @@
 
   <!-- Reviews Dropdown Script (unchanged) -->
   <script>
-  (async () => {
-    const slug = 'ai-made-simple';
-    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
-    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
+    (async () => {
+      const slug = 'ai-made-simple';
+      const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv'; 
+      const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
 
-    const res = await fetch(csvUrl);
-    const text = await res.text();
-    const rows = text.trim().split('\n').slice(1).map(r =>
-      r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(c => c.replace(/^"|"$/g, ''))
-    );
+      const res = await fetch(csvUrl);
+      const text = await res.text();
+      const rows = text.trim().split('\n').slice(1)
+        .map(r => r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/)
+        .map(c => c.replace(/^"|"$/g, '')));
 
-    const reviews = rows
-      .filter(r => r[4] && r[4].toLowerCase() === slug)
-      .sort((a, b) => new Date(b[3]) - new Date(a[3]));
-    if (!reviews.length) return;
+      const reviews = rows
+        .filter(r => r[4] && r[4].toLowerCase() === slug)
+        .sort((a, b) => new Date(b[3]) - new Date(a[3]));
+      if (!reviews.length) return;
 
-    const avg = (reviews.reduce((sum, r) => sum + (parseFloat(r[2])||0), 0) / reviews.length).toFixed(1);
-    const count = reviews.length;
+      const avg = (reviews.reduce((sum, r) => sum + parseFloat(r[2]||0), 0) / reviews.length).toFixed(1);
+      const count = reviews.length;
 
-    const wrapper = document.createElement('div');
-    wrapper.className = 'reviews-summary';
-    wrapper.style.cssText = `
-      margin:2em 0; padding-top:1em; border-top:1px solid #444;
-      color:#ccc; font-family:inherit;
-    `;
-    wrapper.innerHTML = `
-      <div style="margin-bottom:0.5em;">
-        <span style="
-          background:#2e7d32; color:#fff;
-          padding:0.3em 0.8em; border-radius:20px;
-          font-size:0.9em; font-weight:bold;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'reviews-summary';
+      wrapper.style.cssText = `
+        margin:2em 0; padding-top:1em; border-top:1px solid #444;
+        color:#ccc; font-family:inherit;
+      `;
+      wrapper.innerHTML = `
+        <div style="margin-bottom:0.5em;">
+          <span style="
+            background:#2e7d32; color:#fff;
+            padding:0.3em 0.8em; border-radius:20px;
+            font-size:0.9em; font-weight:bold;
+          ">
+            ⭐ Purchased by students worldwide
+          </span>
+        </div>
+        <h3 style="
+          font-weight:600; margin:0.8em 0 0.6em; color:#fff;
         ">
-          ⭐ Purchased by students worldwide
-        </span>
-      </div>
-      <h3 style="
-        font-weight:600; margin:0.8em 0 0.6em; color:#fff;
-      ">
-        <span style="color:#FFD700; font-size:1.2em;">★</span>
-        ${avg} (${count} review${count>1?'s':''})
-      </h3>
-      <div style="display:flex; gap:0.8em; flex-wrap:wrap; margin:1em 0;">
-        <button id="toggle-reviews" style="
-          padding:0.5em 1em; font-size:0.95em;
-          background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
-          color:#f1f1f1; border:1px solid #555;
-          border-radius:6px; cursor:pointer;
-        ">See all reviews</button>
-        <button id="submit-review" style="
-          padding:0.5em 1em; font-size:0.95em;
-          background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
-          color:#f1f1f1; border:1px solid #555;
-          border-radius:6px; cursor:pointer;
-        ">Submit a review</button>
-      </div>
-      <div id="reviews-body" style="margin-top:1.2em; display:none;">
-        ${reviews.map(r => `
-          <div style="margin-bottom:1.5em;">
-            <strong style="color:#eee;">${r[0]||'Anonymous'}</strong>
-            ${'★'.repeat(+r[2]).padEnd(5,'☆')
-              .replace(/★/g, '<span style="color:#FFD700;">★</span>')
-              .replace(/☆/g, '<span style="color:#ccc;">★</span>')}<br>
-            <small style="color:#aaa;">
-              ${new Date(r[3]).toLocaleDateString()}
-            </small>
-            <p style="margin:0.4em 0 0; color:#ccc; line-height:1.4;">
-              ${r[1]}
-            </p>
-            ${r[5] ? `
-              <div style="margin-left:1em; margin-top:0.3em;">
-                <div style="
-                  font-size:0.85em; color:#89c4ff; margin-bottom:0.2em;
-                  font-weight:600;
-                ">Instructor Reply:</div>
-                <div style="
-                  font-size:0.85em; color:#7fbfff; font-style:italic;
-                ">${r[5]}</div>
-              </div>` : ''}
-          </div>
-        `).join('')}
-      </div>
-    `;
+          <span style="color:#FFD700; font-size:1.2em;">★</span>
+          ${avg} (${count} review${count>1?'s':''})
+        </h3>
+        <div style="display:flex; gap:0.8em; flex-wrap:wrap; margin:1em 0;">
+          <button id="toggle-reviews" style="
+            padding:0.5em 1em; font-size:0.95em;
+            background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
+            color:#f1f1f1; border:1px solid #555;
+            border-radius:6px; cursor:pointer;
+          ">See all reviews</button>
+          <button id="submit-review" style="
+            padding:0.5em 1em; font-size:0.95em;
+            background:linear-gradient(145deg,#2a2a2a,#1e1e1e);
+            color:#f1f1f1; border:1px solid #555;
+            border-radius:6px; cursor:pointer;
+          ">Submit a review</button>
+        </div>
+        <div id="reviews-body" style="margin-top:1.2em; display:none;">
+          ${reviews.map(r => `
+            <div style="margin-bottom:1.5em;">
+              <strong style="color:#eee;">${r[0]||'Anonymous'}</strong>
+              ${'★'.repeat(+r[2]).padEnd(5,'☆')
+                .replace(/★/g, '<span style="color:#FFD700;">★</span>')
+                .replace(/☆/g, '<span style="color:#ccc;">★</span>')}<br>
+              <small style="color:#aaa;">
+                ${new Date(r[3]).toLocaleDateString()}
+              </small>
+              <p style="margin:0.4em 0 0; color:#ccc; line-height:1.4;">
+                ${r[1]}
+              </p>
+              ${r[5] ? `
+                <div style="margin-left:1em; margin-top:0.3em;">
+                  <div style="
+                    font-size:0.85em; color:#89c4ff; margin-bottom:0.2em;
+                    font-weight:600;
+                  ">Instructor Reply:</div>
+                  <div style="
+                    font-size:0.85em; color:#7fbfff; font-style:italic;
+                  ">${r[5]}</div>
+                </div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      `;
 
-    document.getElementById('reviews-container').appendChild(wrapper);
-    document.getElementById('submit-review').addEventListener('click', () => window.open(formUrl, '_blank'));
-    document.getElementById('toggle-reviews').addEventListener('click', e => {
-      const body = document.getElementById('reviews-body');
-      const show = body.style.display === 'block';
-      body.style.display = show ? 'none' : 'block';
-      e.target.textContent = show ? 'See all reviews' : 'Hide reviews';
-    });
-  })();
+      document.getElementById('reviews-container').appendChild(wrapper);
+      document.getElementById('submit-review').addEventListener('click', () => window.open(formUrl, '_blank'));
+      document.getElementById('toggle-reviews').addEventListener('click', e => {
+        const body = document.getElementById('reviews-body');
+        const show = body.style.display === 'block';
+        body.style.display = show ? 'none' : 'block';
+        e.target.textContent = show ? 'See all reviews' : 'Hide reviews';
+      });
+    })();
   </script>
 
 </body>
