@@ -443,7 +443,7 @@
   </div>
 </section>
 <!-- END: Affordably Priced Promo Block -->
-  
+ 
   <footer>
     © 2025 STEMSphere Academy. All rights reserved.
   </footer>
@@ -593,4 +593,48 @@
   </script>
 </body>
 </html>
+
+<!-- START: Mobile Optimization Script -->
+<style>
+  /* Global fix to prevent horizontal scroll */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ensure all sections and containers respect screen width */
+  section, div, ul, li {
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+
+  /* Responsive padding and font scaling */
+  @media (max-width: 600px) {
+    section {
+      padding: 2em 1em !important;
+    }
+    h2 {
+      font-size: 1.2em !important;
+    }
+    p {
+      font-size: 1em !important;
+    }
+    ul {
+      padding-left: 1em !important;
+    }
+  }
+
+  /* Prevent oversized images or videos from overflowing */
+  img, iframe, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Fix for any rogue elements causing overflow */
+  * {
+    box-sizing: border-box;
+  }
+</style>
+<!-- END: Mobile Optimization Script -->
 
