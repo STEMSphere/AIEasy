@@ -285,7 +285,7 @@
 <section style="background-color: #FFFDE7; width: 100%; padding: 3em 1.5em; text-align: center;">
   <div style="max-width: 750px; margin: 0 auto;">
     <h2 style="font-weight: bold; font-size: 1.5em; margin-bottom: 1em; color: #000;">
-      The Future of AI Is Already Here—
+      The Future of AI Is Already Here
       <span style="background: linear-gradient(120deg, #b30000, #ff4d4d); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
         Don’t Get Left Behind
       </span>
@@ -392,33 +392,39 @@
 </section>
 <!-- END: AI Made Easy Syllabus Block -->
 
-<!-- Begin: PaymentBlock -->
-      <div class="payment-card">
-        <div class="payment-intro">🌐 Pay in your local currency</div>
-        <div class="payment-buttons">
-          <a href="https://buy.stripe.com/fZueVc0F30DG5dRdk333W37" class="btn-usa">
-            🇺🇸 Pay $20 USD
-          </a>
-          <a href="https://buy.stripe.com/6oUbJ0fzX3PSeOrgwf33W38" class="btn-india">
-            🇮🇳 Pay ₹650 Rupees
-          </a>
-       <a class="btn-nigeria" href="https://paystack.com/buy/ai-made-easy" target="_blank">
-  🇳🇬 Pay ₦11,000 Naira
-</a>
+<!-- START: Payment Buttons -->
+<style>
+  /* ─────────────── Payment Buttons ─────────────── */
 
-          <a href="https://buy.stripe.com/3cIfZgcnLcmo7lZeo733W3c" class="btn-pk">
-            🇵🇰 Pay PKR2,000
-          </a>
-          <a href="https://buy.stripe.com/00wfZgbjH5Y0gWzcfZ33W3a" class="btn-sg">
-            🇸🇬 Pay S$25 SGD
-          </a>
-          <a href="https://buy.stripe.com/3cIeVcevT0DG35Jfsb33W3b" class="btn-th">
-            🇹🇭 Pay ฿250 Thai Baht
-          </a>
-        </div>
-      </div>
-    </div>
-  </main>
+  /* Base button style */
+  .payment-buttons a {
+    display: inline-block;
+    padding: 0.75em 1.2em;
+    margin: 0.5em;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    animation: pulse 1.8s infinite;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  /* Pulsating animation */
+  @keyframes pulse {
+    0%   { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.4); }
+    50%  { transform: scale(1.05); box-shadow: 0 0 12px rgba(255, 255, 255, 0.6); }
+    100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.4); }
+  }
+
+  /* Fluorescent color upgrades */
+  .btn-usa     { background-color: #ff0055; }  /* Fluorescent red-pink */
+  .btn-india   { background-color: #ff9900; }  /* Bright saffron orange */
+  .btn-nigeria { background-color: #00ff88; }  /* Neon green */
+  .btn-pk      { background-color: #00cfff; }  /* Electric blue */
+  .btn-sg      { background-color: #ff66cc; }  /* Fluorescent pink */
+  .btn-th      { background-color: #cc00ff; }  /* Vivid violet */
+</style>
+<!-- END: Payment Buttons -->
 
 <!-- START: Affordably Priced Promo Block -->
 <section style="background-color: #FFF4F7; width: 100%; padding: 3em 1.5em; text-align: center;">
