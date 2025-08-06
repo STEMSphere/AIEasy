@@ -392,15 +392,41 @@
 </section>
 <!-- END: AI Made Easy Syllabus Block -->
 
+<!-- START: Countdown Timer -->
+<script>
+  function startCountdown(duration, display) {
+    let timer = duration, hours, minutes, seconds;
+    setInterval(function () {
+      hours = Math.floor(timer / 3600);
+      minutes = Math.floor((timer % 3600) / 60);
+      seconds = timer % 60;
+
+      display.textContent = 
+        (hours < 10 ? "0" : "") + hours + ":" + 
+        (minutes < 10 ? "0" : "") + minutes + ":" + 
+        (seconds < 10 ? "0" : "") + seconds;
+
+      if (--timer < 0) {
+        timer = duration; // Restart timer
+      }
+    }, 1000);
+  }
+
+  window.onload = function () {
+    const countdownDisplay = document.querySelector("#countdown-timer");
+    startCountdown(16200, countdownDisplay); // 4 hours 30 minutes
+  };
+</script>
+<!-- END: Countdown Timer -->
+
 <!-- START: Payment Buttons -->
 <style>
   /* ─────────────── Payment Buttons ─────────────── */
-
   .payment-buttons {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 0.4em; /* Reduced spacing between buttons */
+    gap: 0.4em;
   }
 
   .payment-buttons a {
@@ -417,25 +443,26 @@
     box-sizing: border-box;
     font-size: 1em;
     transition: transform 0.15s ease;
-    animation: pulse 2.8s ease-in-out infinite; /* Softer pulse */
   }
 
   .payment-buttons a:hover {
     transform: translateY(-2px);
   }
 
-  @keyframes pulse {
-    0%   { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.2); }
-    50%  { transform: scale(1.02); box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
-    100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.2); }
-  }
+  .btn-usa     { background-color: #1E3A8A; }
+  .btn-india   { background-color: #ff9900; }
+  .btn-nigeria { background-color: #065F46; }
+  .btn-pk      { background-color: #00cfff; }
+  .btn-sg      { background-color: #ff66cc; }
+  .btn-th      { background-color: #cc00ff; }
 
-  .btn-usa     { background-color: #1E3A8A; }  /* Darker blue */
-  .btn-india   { background-color: #ff9900; }  /* Bright saffron orange */
-  .btn-nigeria { background-color: #065F46; }  /* Darker green */
-  .btn-pk      { background-color: #00cfff; }  /* Electric blue */
-  .btn-sg      { background-color: #ff66cc; }  /* Fluorescent pink */
-  .btn-th      { background-color: #cc00ff; }  /* Vivid violet */
+  .strike-price {
+    text-decoration: line-through;
+    color: #ccc;
+    font-weight: 400;
+    margin-left: 0.5em;
+    font-size: 0.9em;
+  }
 
   @media (max-width: 600px) {
     .payment-buttons a {
@@ -448,25 +475,27 @@
 </style>
 
 <div class="payment-card">
-  <div class="payment-intro">🌐 Pay in your local currency</div>
+  <div class="payment-intro" style="text-align: center; font-weight: bold; font-size: 1.2em; margin-bottom: 1em;">
+    🚨 Limited-Time Offer — <span id="countdown-timer" style="color: #ff4d4d;">Loading...</span> left to claim your discount!
+  </div>
   <div class="payment-buttons">
     <a href="https://buy.stripe.com/fZueVc0F30DG5dRdk333W37" class="btn-usa">
-      🇺🇸 Pay $20 USD
+      🇺🇸 Pay $20 USD <span class="strike-price">$50</span>
     </a>
     <a href="https://buy.stripe.com/6oUbJ0fzX3PSeOrgwf33W38" class="btn-india">
-      🇮🇳 Pay ₹650 Rupees
+      🇮🇳 Pay ₹650 Rupees <span class="strike-price">₹4,200</span>
     </a>
     <a class="btn-nigeria" href="https://paystack.com/buy/ai-made-easy" target="_blank">
-      🇳🇬 Pay ₦11,000 Naira
+      🇳🇬 Pay ₦11,000 Naira <span class="strike-price">₦39,000</span>
     </a>
     <a href="https://buy.stripe.com/3cIfZgcnLcmo7lZeo733W3c" class="btn-pk">
-      🇵🇰 Pay PKR2,000
+      🇵🇰 Pay PKR2,000 <span class="strike-price">PKR14,000</span>
     </a>
     <a href="https://buy.stripe.com/00wfZgbjH5Y0gWzcfZ33W3a" class="btn-sg">
-      🇸🇬 Pay S$25 SGD
+      🇸🇬 Pay S$25 SGD <span class="strike-price">S$67</span>
     </a>
     <a href="https://buy.stripe.com/3cIeVcevT0DG35Jfsb33W3b" class="btn-th">
-      🇹🇭 Pay ฿250 Thai Baht
+      🇹🇭 Pay ฿250 Thai Baht <span class="strike-price">฿1,800</span>
     </a>
   </div>
 </div>
