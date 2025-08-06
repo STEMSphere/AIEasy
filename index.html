@@ -396,28 +396,43 @@
 <style>
   /* ─────────────── Payment Buttons ─────────────── */
 
+  .payment-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4em; /* Reduced spacing between buttons */
+  }
+
   .payment-buttons a {
-    display: inline-block;
-    padding: 0.75em 1.2em;
-    margin: 0.5em;
-    border-radius: 8px;
-    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
     text-decoration: none;
     color: #fff;
-    animation: pulse 1.8s infinite;
-    transition: transform 0.2s ease-in-out;
+    padding: 0.75em 1em;
+    border-radius: 999px;
+    font-weight: 700;
+    width: 100%;
+    box-sizing: border-box;
     font-size: 1em;
+    transition: transform 0.15s ease;
+    animation: pulse 2.8s ease-in-out infinite; /* Softer pulse */
+  }
+
+  .payment-buttons a:hover {
+    transform: translateY(-2px);
   }
 
   @keyframes pulse {
-    0%   { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.4); }
-    50%  { transform: scale(1.05); box-shadow: 0 0 12px rgba(255, 255, 255, 0.6); }
-    100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.4); }
+    0%   { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.2); }
+    50%  { transform: scale(1.02); box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
+    100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.2); }
   }
 
-  .btn-usa     { background-color: #ff0055; }  /* Fluorescent red-pink */
+  .btn-usa     { background-color: #1E3A8A; }  /* Darker blue */
   .btn-india   { background-color: #ff9900; }  /* Bright saffron orange */
-  .btn-nigeria { background-color: #00ff88; }  /* Neon green */
+  .btn-nigeria { background-color: #065F46; }  /* Darker green */
   .btn-pk      { background-color: #00cfff; }  /* Electric blue */
   .btn-sg      { background-color: #ff66cc; }  /* Fluorescent pink */
   .btn-th      { background-color: #cc00ff; }  /* Vivid violet */
@@ -426,7 +441,7 @@
     .payment-buttons a {
       display: block;
       width: 90%;
-      margin: 0.6em auto;
+      margin: 0.4em auto;
       font-size: 1em;
     }
   }
@@ -456,7 +471,6 @@
   </div>
 </div>
 <!-- END: Payment Buttons -->
-
 
 <!-- START: Affordably Priced Promo Block -->
 <section style="background-color: #FFF4F7; width: 100%; padding: 3em 1.5em; text-align: center;">
