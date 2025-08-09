@@ -122,148 +122,147 @@
     .feature-list li {
       margin-bottom: 0.6em;
     }
+  /* ──────────────────────────────────────────────────────────────────
+     PAYMENT CARD & BUTTONS
+  ────────────────────────────────────────────────────────────────── */
+  .payment-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5em;
+    margin: 2em 0;
+    text-align: left;
+    color: #333;
+  }
+  .payment-card .payment-intro {
+    font-weight: 600;
+    margin-bottom: 1em;
+  }
+  .payment-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8em;
+  }
+  .payment-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.8em 1em;
+    border-radius: 999px;
+    font-weight: 700;
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.15s ease;
+  }
+  .payment-buttons a:hover {
+    transform: translateY(-2px);
+  }
+  .btn-usa     { background: #3B82F6; }
+  .btn-india   { background: #D97706; }
+  .btn-nigeria { background: #059669; }
+  .btn-sg      { background: #F59E0B; }
+  .btn-th      { background: #EF4444; }
+  .btn-pk      { background: #6366F1; }
 
-    /* ──────────────────────────────────────────────────────────────────
-       PAYMENT CARD & BUTTONS
-    ────────────────────────────────────────────────────────────────── */
-    .payment-card {
-      background: #fff;
-      border-radius: 8px;
-      padding: 1.5em;
-      margin: 2em 0;
-      text-align: left;
-      color: #333;
-    }
-    .payment-card .payment-intro {
-      font-weight: 600;
-      margin-bottom: 1em;
-    }
-    .payment-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.8em;
-    }
-    .payment-buttons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5em;
-      text-decoration: none;
-      color: #fff;
-      padding: 0.8em 1em;
-      border-radius: 999px;
-      font-weight: 700;
-      width: 100%;
-      box-sizing: border-box;
-      transition: transform 0.15s ease;
-    }
-    .payment-buttons a:hover {
-      transform: translateY(-2px);
-    }
-    .btn-usa     { background: #3B82F6; }
-    .btn-india   { background: #D97706; }
-    .btn-nigeria { background: #059669; }
-    .btn-sg      { background: #F59E0B; }
-    .btn-th      { background: #EF4444; }
-    .btn-pk      { background: #6366F1; }
+  footer {
+    font-size: 0.85em;
+    color: #bbb;
+    padding: 2em 1em;
+    border-top: 1px solid #333;
+  }
 
-    footer {
-      font-size: 0.85em;
-      color: #bbb;
-      padding: 2em 1em;
-      border-top: 1px solid #333;
-    }
-
-    /* ──────────────────────────────────────────────────────────────────
-       Masked Video & Sign-Up Button Styles
-    ────────────────────────────────────────────────────────────────── */
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 8px;
-    }
-    .video-wrapper {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      border-radius: 8px;
-      background: #000;
-    }
-    .placeholder-frame {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      cursor: pointer;
-      z-index: 100;
-    }
-    .placeholder-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .play-button {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 0 15px #ffeb3b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 101;
-    }
-    .play-button::after {
-      content: '';
-      display: block;
-      width: 0; height: 0;
-      border-left: 25px solid #000;
-      border-top: 15px solid transparent;
-      border-bottom: 15px solid transparent;
-    }
-    #player {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: none;
-      z-index: 0;
-    }
-    .click-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 200;
-      cursor: pointer;
-    }
-    .sign-up-btn {
-      display: none;
-      position: absolute;
-      bottom: 15%;
-      left: 10%;
-      padding: 0.8em 1.2em;
-      border: none;
-      border-radius: 4px;
-      background: #FFDD00;
-      color: #000;
-      font-weight: 700;
-      box-shadow: 0 0 8px rgba(255,221,0,0.7);
-      cursor: pointer;
-      z-index: 900;
-    }
-    @media (max-width: 600px) {
-      .title-group span { font-size: 2em; }
-      h2 { font-size: 1em; }
-      .video-message { font-size: 1em; }
-      .sign-up-btn { font-size: 0.9em; bottom: 10%; }
-    }
-  </style>
+  /* ──────────────────────────────────────────────────────────────────
+     Masked Video & Sign-Up Button Styles
+  ────────────────────────────────────────────────────────────────── */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-wrapper {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #000;
+  }
+  .placeholder-frame {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 100;
+  }
+  .placeholder-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .play-button {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 15px #ffeb3b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+  }
+  .play-button::after {
+    content: '';
+    display: block;
+    width: 0; height: 0;
+    border-left: 25px solid #000;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+  }
+  #player {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: none;
+    z-index: 0;
+  }
+  .click-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 200;
+    cursor: pointer;
+  }
+  .sign-up-btn {
+    display: none;
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    padding: 0.8em 1.2em;
+    border: none;
+    border-radius: 4px;
+    background: #FFDD00;
+    color: #000;
+    font-weight: 700;
+    box-shadow: 0 0 8px rgba(255,221,0,0.7);
+    cursor: pointer;
+    z-index: 900;
+  }
+  @media (max-width: 600px) {
+    .title-group span { font-size: 2em; }
+    h2 { font-size: 1em; }
+    .video-message { font-size: 1em; }
+    .sign-up-btn { font-size: 0.9em; bottom: 10%; }
+  }
+</style>
 </head>
 <body>
   <header>
@@ -300,6 +299,44 @@
 
     <div id="reviews-container" style="max-width:800px;margin:2em auto;padding:0 1em;"></div>
 
+  <!-- click-to-play YouTube injection script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var placeholder = document.getElementById('placeholder');
+      var playBtn      = document.getElementById('playBtn');
+      var overlay      = document.querySelector('.click-overlay');
+      var playerDiv    = document.getElementById('player');
+      var videoStarted = false;
+      var videoID      = 'H_Pvbovsiyw';
+      var videoURL     = 'https://www.youtube.com/embed/' + videoID +
+                         '?autoplay=1&rel=0&modestbranding=1&controls=0';
+
+      function startVideo() {
+        if (videoStarted) return;
+
+        var iframe = document.createElement('iframe');
+        iframe.src             = videoURL;
+        iframe.frameBorder     = '0';
+        iframe.allow           = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.style.width     = '100%';
+        iframe.style.height    = '100%';
+        playerDiv.appendChild(iframe);
+
+        playerDiv.style.display   = 'block';
+        placeholder.style.display = 'none';
+        playBtn.style.display     = 'none';
+        overlay.style.display     = 'none';
+
+        videoStarted = true;
+      }
+
+      [placeholder, playBtn, overlay].forEach(function(el) {
+        if (el) el.addEventListener('click', startVideo);
+      });
+    });
+  </script>
+  
  <!-- START: AI Made Easy Impact Block -->
 <section style="background-color: #FFFDE7; width: 100%; padding: 3em 1.5em; text-align: center;">
   <div style="max-width: 750px; margin: 0 auto;">
